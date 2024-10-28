@@ -2,7 +2,7 @@
 * Smooth Scroll West
 * @version 1.0.0
 * @author Willian West [ @willianwest ]
-* @GitHub https://github.com/willian-west/Smooth-Scroll
+* @GitHub https://github.com/willian-west/Smooth-Scroll-West
 * @license The MIT License (MIT)
 */
 
