@@ -8,7 +8,7 @@ The **Smooth Scroll** allows you to create a smooth scrolling for your web page.
 
 ### Install
 
-Download the [latest release](https://github.com/willian-west/Smooth-Scroll/releases).
+Download the [latest release](https://github.com/willian-west/Smooth-Scroll-West/releases).
 
 <br>
 
