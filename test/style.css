@@ -1,7 +1,35 @@
 body{
     font-family: "Bodoni Moda", serif;
+    font-size: 62.5%;
+}
+
+.font-exo{
+    font-family: 'Exo 2';
+}
+
+.font-secondary{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: .7em;
+    line-height: 1.6;
+}
+
+p, li{
+    font-family: 'Exo 2';
 }
 
 h1{
-    font-size: 7vw;
+    font-size: 8vw;
+}
+
+h1 small{
+    font-size: 0.56em;
+}
+
+.font-big{
+    font-size: 25vw;
+    line-height: 0.86;
+}
+
+.font-big small{
+    font-size: 16vw;
 }

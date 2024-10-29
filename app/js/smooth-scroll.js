@@ -79,17 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
     * @protected
     */
     function checkWayPoints() {
-        waypoints.forEach(function(elm) {
-            const elementTop      = elm.getBoundingClientRect().top + __Scroll.scrollPosition;
-            const elementHeight   = elm.offsetHeight;
-            const viewportTop     = __Scroll.scrollPosition;
-            const viewportBottom  = __Scroll.scrollPosition + __Scroll.containerHeight;
-            const activationPoint = elementTop + elementHeight * __Scroll.wayPointPercShow;
+        if (waypoints.length > 0) {
+            waypoints.forEach(function(elm) {
+                const elementTop      = elm.getBoundingClientRect().top + __Scroll.scrollPosition;
+                const elementHeight   = elm.offsetHeight;
+                const viewportBottom  = __Scroll.scrollPosition + __Scroll.containerHeight;
+                const activationPoint = elementTop + elementHeight * __Scroll.wayPointPercShow;
 
-            if (viewportBottom >= activationPoint) {
-                elm.classList.add('animated');
-            }
-        });
+                if (viewportBottom >= activationPoint) {
+                    elm.classList.add('animated');
+                }
+            });
+        }
     }
 
 
@@ -121,28 +122,23 @@ document.addEventListener('DOMContentLoaded', () => {
     * @protected
     */
     function toggleMenuFixed() {
-        
+
+        if( header == null ) return false;
+
         // Mode compact menu
-        if (typeof IS_MOBILE !== 'undefined')
-        {    
-            if(!IS_MOBILE)
-            {
-                if( __Scroll.scrollPosition > 50 )
-                {
-                    header.classList.add('is-compact');
-
-                    if( !__Scroll.activeToggleMenuFixed ) header.classList.add('is-hide');
-                }else{
-                    header.classList.remove('is-compact');
-
-                    if( !__Scroll.activeToggleMenuFixed ) header.classList.remove('is-hide');
-                }
-            }
+        if( __Scroll.scrollPosition > 50 )
+        {
+            header.classList.add('is-compact');
+            if( !__Scroll.activeToggleMenuFixed ) header.classList.add('is-hide');
+        }else{
+            header.classList.remove('is-compact');
+            if( !__Scroll.activeToggleMenuFixed ) header.classList.remove('is-hide');
         }
+          
 
 
-        if( __Scroll.activeToggleMenuFixed ){
-
+        if( __Scroll.activeToggleMenuFixed )
+        {
             // Show/hide menu with scroll
             let scrollPercent = (__Scroll.scrollPosition / (__Scroll.contentHeight - __Scroll.containerHeight));
 
@@ -338,8 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        if (parallaxLeftItems.length > 0) {
-
+        if (parallaxLeftItems.length > 0)
+        {
             parallaxLeftItems.forEach(item => {
                 const start  = parseInt(item.getAttribute('data-start'));
                 const end    = parseInt(item.getAttribute('data-end'));
