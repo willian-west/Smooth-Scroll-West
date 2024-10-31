@@ -62,6 +62,14 @@ document.addEventListener('DOMContentLoaded', () => {
     __Scroll.containerHeight    = __Scroll.scrollContainer.clientHeight;
 
 
+    /**
+    * Message Warning.
+    * @protected
+    */
+    function warn(text) {
+        console.warn(text);
+    }
+
 
     /**
     * Create Element ScrollBar.
@@ -304,8 +312,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const itemTop    = __Scroll.getOffsetTop(item);
                 const itemHeight = rect.height;
 
-                const start = parseInt(item.getAttribute('data-start'));
-                const end   = parseInt(item.getAttribute('data-end'));
+                let start = parseInt(item.getAttribute('data-start'));
+                let end   = parseInt(item.getAttribute('data-end'));
+
+                if( isNaN(start) ){
+                    start = -50;
+                    warn("Element '"+ item.className +"' is missing the required 'data-start' attribute.");
+                }
+
+                if( isNaN(end) ){
+                    end = 50;
+                    warn("Element '"+ item.className +"' is missing the required 'data-end' attribute.");
+                }
+
 
                 let viewportStart = __Scroll.scrollPosition;
                 let viewportEnd   = __Scroll.scrollPosition + __Scroll.containerHeight;
@@ -337,9 +356,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parallaxLeftItems.length > 0)
         {
             parallaxLeftItems.forEach(item => {
-                const start  = parseInt(item.getAttribute('data-start'));
-                const end    = parseInt(item.getAttribute('data-end'));
-                const offset = parseInt(item.getAttribute('data-offset'));
+                let direction  = "left";
+                const start    = parseInt(item.getAttribute('data-start'));
+                const end      = parseInt(item.getAttribute('data-end'));
+                let offset     = parseInt(item.getAttribute('data-offset'));
+                let attrDirect = item.getAttribute('data-direction');
+
+                if( attrDirect == "right" ) direction = "right";
+
+                if( isNaN(offset) ){
+                    offset = 100;
+                    warn("Element '"+ item.className +"' is missing the required 'data-offset' attribute.");
+                }
 
                 if (__Scroll.scrollPosition >= (start - deltaOffSet) && __Scroll.scrollPosition <= (end + deltaOffSet))
                 {
@@ -347,7 +375,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     let translateX = progress * offset; // CALCULATES DISPLACEMENT BASED ON PROGRESS
                     translateX     = Math.round(translateX);
 
-                    item.style.transform = `translateX(-${translateX}px)`;
+                    if( direction == "left" ){
+                        item.style.transform = `translateX(-${translateX}px)`;
+                    }else{
+                        item.style.transform = `translateX(${translateX}px)`;
+                    }
 
                     if( __Scroll.debug ) console.log('Paraleft PosX: '+translateX);
                 }
