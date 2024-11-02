@@ -15,6 +15,7 @@ var __Scroll = new Object();
 
 __Scroll.scrollSpeed            = 1.2;    // Scroll Speed
 __Scroll.wayPointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
+__Scroll.timeCheckWayPoint      = 700;    // Time to check the waypoint class when the scroll movement stops
 __Scroll.activeScrollPage       = true;   // Enable page scrolling
 __Scroll.debug                  = false;  // Mode Debug
 __Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on header tag
@@ -47,20 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let checkScroll;
     let scrollBar;
     let animationId;
-    let timeDelayInitial        = 500;
-    let isDragging              = false;
-    let startY                  = 0;
-    let startScrollBarPosition  = 0;
-    let deltaOffSet             = 0;
-    const waypoints             = document.querySelectorAll('.waypoint');
-    const header                = document.querySelector('header');
-    const parallaxItems         = document.querySelectorAll('.js-parallax');
-    const parallaxLeftItems     = document.querySelectorAll('.js-paraleft');
-    const smoothScrollLink      = document.querySelectorAll('.smooth-scroll-link');
+    let timeDelayInitial          = 500;
+    let isDragging                = false;
+    let startY                    = 0;
+    let startScrollBarPosition    = 0;
+    let deltaOffSet               = 0;
+    let smoothScrollPage          = localStorage.getItem("smooth-scroll-page");
+    let smoothScrollLocalPosition = parseFloat(localStorage.getItem("smooth-scroll-position")) || 0;
+    const waypoints               = document.querySelectorAll('.waypoint');
+    const header                  = document.querySelector('header');
+    const parallaxItems           = document.querySelectorAll('.js-parallax');
+    const parallaxLeftItems       = document.querySelectorAll('.js-paraleft');
+    const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
+    
+    __Scroll.contentHeight        = __Scroll.scrollContent.scrollHeight;
+    __Scroll.containerHeight      = __Scroll.scrollContainer.clientHeight;
 
-    __Scroll.contentHeight      = __Scroll.scrollContent.scrollHeight;
-    __Scroll.containerHeight    = __Scroll.scrollContainer.clientHeight;
 
+    
 
     /**
     * Message Warning.
@@ -185,8 +190,11 @@ document.addEventListener('DOMContentLoaded', () => {
             updateScrollBar();
             updateParallax();
 
+            localStorage.setItem("smooth-scroll-position", __Scroll.scrollPosition);
+            
+
             // Execute animation delay
-            scrollTimeout = setTimeout(checkWayPoints, ((__Scroll.scrollSpeed * 1000) * 0.667)); // Time = 66% OF scrollSpeed 
+            scrollTimeout = setTimeout(checkWayPoints, __Scroll.timeCheckWayPoint);
 
             toggleMenuFixed();
 
@@ -424,6 +432,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateResizePage();
         updateScrollBar();
         scrollToHashElement();
+        scrollToHistoric();
 
         if( __Scroll.debug ) console.log('Smooth Scroll initialized.');
 
@@ -450,6 +459,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+
+
+    // Scrolls to the element matching the url hash
+    function scrollToHistoric() {
+
+        if( smoothScrollPage !== window.location.href )
+        {
+            localStorage.setItem("smooth-scroll-page", window.location.href);
+        }
+        else
+        {
+            if (!isNaN(smoothScrollLocalPosition))
+            {
+                __Scroll.scrollPosition = smoothScrollLocalPosition;
+                applyTransform(smoothScrollLocalPosition);
+                updateScrollBar();
+
+                setTimeout( checkWayPoints(), 1100);
+            }
+        }
+    }
+
+
+
+
     // Scrolls to the element matching the url hash
     function scrollToHashElement() {
         const hash = window.location.hash;
@@ -463,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 __Scroll.scrollPosition = __Scroll.getOffsetTop(`#${elementId}`);
 
-                header.classList.add('is-hide');
+                if( header != null ) header.classList.add('is-hide');
 
                 setTimeout( () => {
                     checkWayPoints();
