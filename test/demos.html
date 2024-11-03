@@ -61,35 +61,18 @@
 
 
 
-                <div class="container mb-6">
-
+                <div class="container">
+                    
                     <h1 class="mt-6 has-text-info">Smooth Scroll <small class="has-text-text">West</small></h1>
 
                     <div class="content is-large mt-5">
 
-                        <div class="columns">
-                            <div class="column is-6">
-                            
-                                <p class="mb-6 xsubtitle"><strong>Smooth Scroll West</strong> allows you to create a <strong>very smooth scrolling</strong> for your web page with <strong>Parallax</strong> features.</p>
+                        <p class="mb-5 xsubtitle"><strong>Smooth Scroll West</strong> allows you to create a <strong>very smooth scrolling</strong> for your web page with <strong>Parallax</strong> features.</p>
                         
-                                <a href="" class="button is-info is-medium is-rounded">Download</a>
-                                <a href="" class="button is-dark is-medium is-rounded ml-2">GitHub</a>
+                        <a href="" class="button is-info is-medium is-rounded">Download</a>
+                        <a href="" class="button is-dark is-medium is-rounded ml-2">GitHub</a>
 
-                                <p class="mt-2 subtitle"><small>Version 1.0.0</small></p>
-
-                            </div>
-
-                            <div class="column is-1"></div>
-
-                            <div class="column is-1">
-                                <img src="icon-1.webp" alt="" class="icone">
-                            </div>
-                        </div>
-
-                        
-
-
-                       
+                        <p class="mt-2 subtitle"><small>Version 1.0.0</small></p>
 
 
                         <p class="mt-6 ">It has some other <strong>interesting features</strong>, such as:</p>
@@ -99,6 +82,7 @@
                             <li><strong>Horizontal</strong> parallax</li>
                             <li>Anchoring, <strong>moving the page</strong> to a certain point, indicated <strong>by ID</strong>.</li>
                             <li>Reading the <strong>URL hash</strong> [ domain.com/<strong>#contact</strong> ] to move to the indicated <strong></strong>element ID</strong>.</li>
+                            <!-- <li>Adds or removes the <strong>'is-hide'</strong> class for the <strong>Header tag</strong>, to show or hide the site <strong>menu</strong>, if it is in the Header tag during scrolling.</li> -->
                         </ul>
 
                         <div class="pt-3"></div>
@@ -107,35 +91,25 @@
                     
 
 
-
-                        <h1 class="mt-5 pt-6 pb-6">Some <span class="has-text-info">Parallax</span> Demos</h1>
-
-                    </div>
-
-                </div>
+                        <h1 class="mt-5 pt-6">Vertical <span class="has-text-info">Parallax</span></h1>
+                        <p class="mb-6">
+                            The element will move in sync with the page scroll, within the maximum and minimum pixel limits. <strong>To activate</strong> it, simply add the <strong>"js-parallax"</strong> class to the desired element along with the <strong>"data-start"</strong> and <strong>"data-end"</strong> attributes, which indicate the starting and ending points of the movement. The movement will only occur when the element is within the visible area of ​​the page.
+                        </p>
 
 
-                <div class="font-big mt-6 pt-6 pb-6">
-                    <div  class="js-paraleft t1" data-offset="550">Smo<span class="has-text-info">o</span>th</div>
-                    <span class="js-paraleft is-block has-text-right" data-direction="right" data-offset="500"><span class="has-text-info">S</span>croll</span>
-                    <span class="js-paraleft is-block has-text-right" data-offset="1100"><small class="is-block"><span class="has-text-info">W</span>est</small></span>
-                </div>
-
-
-                <div class="container mt-6">
-
-                    <div class="content is-large mt-5">
-
-
-
-
+                        
 
                         <div class="pt-6 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
+                            <div class="tags has-addons font-exo">
+                                <span class="tag is-dark">EXAMPLE</span>
+                                <span class="tag is-info">01</span>
+                            </div>
+
+                            <div class="columns is-vcentered is-centered mt-4">
+                                <div class="column is-4">
                                     <div class="">
                                         <img
-                                            src="https://placehold.co/684x400/222834/14161a/jpg"
+                                            src="https://placehold.co/600x400/222834/14161a/jpg"
                                             alt="Placeholder image"
                                         />
                                     </div>
@@ -147,20 +121,26 @@
                                     <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
                                 </div>
                             </div>
-
+                            
+                            
                             <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code> <span><</span>h2 class="js-parallax" data-start="-50" data-end="50">  </code></pre>
+
+                            <pre><code> <span><</span>div class="js-parallax" data-start="-50" data-end="50">  </code></pre>
                         </div>
 
 
-                        <hr>
 
 
                         <div class="pt-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
+                            <div class="tags has-addons font-exo">
+                                <span class="tag is-dark">EXAMPLE</span>
+                                <span class="tag is-info">02</span>
+                            </div>
+
+                            <div class="columns is-vcentered is-centered mt-4">
+                                <div class="column is-4">
                                     <img class="js-parallax" data-start="-50" data-end="50" 
-                                        src="https://placehold.co/684x400/222834/14161a/jpg"
+                                        src="https://placehold.co/600x400/222834/14161a/jpg"
                                         alt="Placeholder image"
                                     />
                                 </div>
@@ -172,33 +152,69 @@
                                 </div>
                             </div>
                             
+                            
                             <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
                             <pre><code> <span><</span>img class="js-parallax" data-start="-50" data-end="50"> </code></pre>
                         </div>
-                    
+
+
+
+
+
+
+                        <hr>
+
+                        
+
+
+
+
+
+
+
+
+                        <h1 class="mt-5 pt-6">Horizontal <span class="has-text-info">Parallax</span></h1>
+                        <p>
+                            Curabitur accumsan turpis pharetra <strong>augue tincidunt</strong> blandit.
+                        </p>
+                        <ul>
+                            <li>Aliquam nec felis in sapien venenatis viverra fermentum nec lectus.</li>
+                            <li>Ut non enim metus.</li>
+                        </ul>
                     </div>
 
+
+
+                    <p class="has-text-warning">Important information:</p>
+
+                    <p class="subtitle"><small>Smooth Scroll does not work on mobile devices, as they already have smooth scrolling by default.</small></p>
+
+
+
+
+                    <h2 class="title mt-6 has-text-info">Vertical <span class="has-text-info">Parallax</span></h2>
+
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut obcaecati odit, facilis atque illo non aspernatur deleniti explicabo rem tempore magni, numquam quasi quos voluptatum. Dolore animi doloribus voluptatem id.
+                    </p>
+
+                    <hr>
                 </div>
 
                 
 
-                
+                <div class="font-big">
+                    <div  class="js-paraleft ml-6" data-offset="150">Smooth</div>
+                    <span class="js-paraleft is-block has-text-right" data-direction="right" data-offset="700">Scroll</span>
+                    <span class="js-paraleft is-block has-text-right" data-offset="1100"><small class="is-block">West</small></span>
+                </div>
 
                 <br><br><br><br>
                 <br><br><br><br>
                 <br><br><br><br>
+                <br><br><br><br>
 
-
-
-                <footer class="footer">
-                    <div class="content has-text-centered">
-                        <p>
-                            <strong>Smooth Scroll West</strong> by <a href="https://willianwest.com" class="has-text-info">Willian West</a>.
-                            The source code is licensed
-                            <a href="https://opensource.org/license/mit" class="has-text-info">MIT</a>.
-                        </p>
-                    </div>
-                </footer>
+                <hr>
 
             </div>
         </main>

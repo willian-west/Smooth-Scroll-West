@@ -7,6 +7,10 @@ body{
     font-family: 'Exo 2';
 }
 
+.font-bodoni{
+    font-family: 'Bodoni Moda';
+}
+
 .font-secondary{
     font-family: 'Courier New', Courier, monospace;
     font-size: .7em;
@@ -17,12 +21,49 @@ p, li{
     font-family: 'Exo 2';
 }
 
+
+
+.has-text-info{
+    color: #27e3ff !important;
+}
+
+.is-info{
+    background-color: #27e3ff !important;
+}
+
+p small{
+    font-size: 0.7em;
+}
+
 h1{
     font-size: 8vw;
 }
 
 h1 small{
     font-size: 0.56em;
+}
+
+header{
+    background-color: #2d323b !important;
+    font-size: 1.7em;
+}
+
+footer{
+    font-size: 1.7em;
+    padding-bottom: 45px !important;
+}
+
+.navbar-item{
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+}
+
+nav{
+    background: none !important;
+}
+
+.button{
+    font-family: 'Exo 2';
 }
 
 .font-big{
@@ -33,3 +74,17 @@ h1 small{
 .font-big small{
     font-size: 16vw;
 }
+
+.t1{
+    margin-left: 300px;
+}
+
+.icone{
+    animation: float_01 4s ease-in-out infinite;
+}
+
+@keyframes float_01 {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(20px); }
+    100% { transform: translateY(0); }
+ }

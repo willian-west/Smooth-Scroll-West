@@ -13,12 +13,14 @@ var __Scroll = new Object();
 * @public
 */
 
-__Scroll.scrollSpeed            = 1.2;    // Scroll Speed
+__Scroll.scrollSpeed            = 1.2;    // Scroll speed
+__Scroll.scrollMoveTime         = 1100;   // Scroll movement time - ms
 __Scroll.wayPointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
 __Scroll.timeCheckWayPoint      = 700;    // Time to check the waypoint class when the scroll movement stops
 __Scroll.activeScrollPage       = true;   // Enable page scrolling
-__Scroll.debug                  = false;  // Mode Debug
-__Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on header tag
+__Scroll.debug                  = false;  // Mode debug
+__Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on 'header' tag
+__Scroll.localhost              = false;  // Mode development
 
 
 /**
@@ -56,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let smoothScrollPage          = localStorage.getItem("smooth-scroll-page");
     let smoothScrollLocalPosition = parseFloat(localStorage.getItem("smooth-scroll-position")) || 0;
     const waypoints               = document.querySelectorAll('.waypoint');
-    const header                  = document.querySelector('header');
+    const headerTag               = document.querySelector('header');
     const parallaxItems           = document.querySelectorAll('.js-parallax');
     const parallaxLeftItems       = document.querySelectorAll('.js-paraleft');
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
@@ -64,6 +66,11 @@ document.addEventListener('DOMContentLoaded', () => {
     __Scroll.contentHeight        = __Scroll.scrollContent.scrollHeight;
     __Scroll.containerHeight      = __Scroll.scrollContainer.clientHeight;
 
+
+    // CHECK ENV
+    if (window.location.href.includes("localhost")) {
+        __Scroll.localhost = true;
+    }
 
     
 
@@ -131,21 +138,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-    * Add or remove the class 'is-hide' on header tag.
+    * Add or remove the class 'is-hide' on headerTag tag.
     * @protected
     */
     function toggleMenuFixed() {
 
-        if( header == null ) return false;
+        if( headerTag == null ) return false;
 
         // Mode compact menu
         if( __Scroll.scrollPosition > 50 )
         {
-            header.classList.add('is-compact');
-            if( !__Scroll.activeToggleMenuFixed ) header.classList.add('is-hide');
+            headerTag.classList.add('is-compact');
+            if( !__Scroll.activeToggleMenuFixed ) headerTag.classList.add('is-hide');
         }else{
-            header.classList.remove('is-compact');
-            if( !__Scroll.activeToggleMenuFixed ) header.classList.remove('is-hide');
+            headerTag.classList.remove('is-compact');
+            if( !__Scroll.activeToggleMenuFixed ) headerTag.classList.remove('is-hide');
         }
           
 
@@ -159,10 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if( scrollPercent > checkScroll )
             {
                 if( __Scroll.scrollPosition > 80 ){
-                    if( !__Scroll.menuOpen ) header.classList.add('is-hide');
+                    if( !__Scroll.menuOpen ) headerTag.classList.add('is-hide');
                 }
             }else{
-                header.classList.remove('is-hide');
+                headerTag.classList.remove('is-hide');
             }
 
             checkScroll = scrollPercent;
@@ -190,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateScrollBar();
             updateParallax();
 
-            localStorage.setItem("smooth-scroll-position", __Scroll.scrollPosition);
+            if( __Scroll.localhost ) localStorage.setItem("smooth-scroll-position", __Scroll.scrollPosition);
             
 
             // Execute animation delay
@@ -432,7 +439,8 @@ document.addEventListener('DOMContentLoaded', () => {
         updateResizePage();
         updateScrollBar();
         scrollToHashElement();
-        scrollToHistoric();
+
+        if( __Scroll.localhost ) scrollToHistoric();
 
         if( __Scroll.debug ) console.log('Smooth Scroll initialized.');
 
@@ -476,7 +484,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyTransform(smoothScrollLocalPosition);
                 updateScrollBar();
 
-                setTimeout( checkWayPoints(), 1100);
+                setTimeout( checkWayPoints(), __Scroll.scrollMoveTime);
             }
         }
     }
@@ -497,12 +505,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 __Scroll.scrollPosition = __Scroll.getOffsetTop(`#${elementId}`);
 
-                if( header != null ) header.classList.add('is-hide');
+                if( headerTag != null ) headerTag.classList.add('is-hide');
 
                 setTimeout( () => {
                     checkWayPoints();
                     updateScrollBar();
-                }, 1100);
+                }, __Scroll.scrollMoveTime);
             }
         }
     }
@@ -537,7 +545,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         scrollBar.classList.add('is-link');
                         __Scroll.scrollContent.style.setProperty('--time-scroll-page', timeLinkSec+'s');
                         __Scroll.scrollContent.classList.add('is-link');
-                        header.classList.add('is-hide');
+                        
+                        if( headerTag != null ) headerTag.classList.add('is-hide');
 
 
                         __Scroll.smoothScrollTo(`#${elementId}`);  // SCROLLS TO THE ELEMENT WITH THE ID
