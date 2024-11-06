@@ -13,7 +13,7 @@ var __Scroll = new Object();
 * @public
 */
 
-__Scroll.scrollSpeed            = 1.2;    // Scroll speed
+__Scroll.scrollAmountMove       = 1.2;    // Scroll speed
 __Scroll.scrollMoveTime         = 1100;   // Scroll movement time - ms
 __Scroll.wayPointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
 __Scroll.timeCheckWayPoint      = 700;    // Time to check the waypoint class when the scroll movement stops
@@ -21,6 +21,7 @@ __Scroll.activeScrollPage       = true;   // Enable page scrolling
 __Scroll.debug                  = false;  // Mode debug
 __Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on 'header' tag
 __Scroll.localhost              = false;  // Mode development
+__Scroll.URLhashListener        = true;   // Move page still the id element
 
 
 /**
@@ -38,12 +39,16 @@ __Scroll.menuOpen         = false;
 // Document loaded
 document.addEventListener('DOMContentLoaded', () => {
 
+    let IS_MOBILE = false;
+
     // Detects if the device is mobile
-    if (window.matchMedia("(pointer: coarse)").matches) return false; 
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        IS_MOBILE = true;
+    }
 
     // Check all required classes
     if( __Scroll.scrollContainer == null && __Scroll.scrollContent == null){
-        console.log('Unable to launch Smooth Scroll without ".smooth-scroll-container" and ".smooth-scroll-content" elements.');
+        console.warn('Unable to launch Smooth Scroll without ".smooth-scroll-container" and ".smooth-scroll-content" elements.');
         return false;
     }
 
@@ -62,13 +67,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const parallaxItems           = document.querySelectorAll('.js-parallax');
     const parallaxLeftItems       = document.querySelectorAll('.js-paraleft');
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
-    
+
+
+    if( IS_MOBILE ){
+        __Scroll.containerHeight  = document.documentElement.clientHeight;
+    } else {
+        __Scroll.containerHeight  = __Scroll.scrollContainer.clientHeight;
+    }
+
+    // console.log(__Scroll.containerHeight);
+
     __Scroll.contentHeight        = __Scroll.scrollContent.scrollHeight;
-    __Scroll.containerHeight      = __Scroll.scrollContainer.clientHeight;
+    // __Scroll.containerHeight      = __Scroll.scrollContainer.clientHeight;
 
 
     // CHECK ENV
-    if (window.location.href.includes("localhost")) {
+    if ( window.location.href.includes("localhost") && !IS_MOBILE ) {
         __Scroll.localhost = true;
     }
 
@@ -119,12 +133,15 @@ document.addEventListener('DOMContentLoaded', () => {
     * @protected
     */
     function updateScrollBar() {
-        const scrollBarHeight       = (__Scroll.containerHeight / __Scroll.contentHeight) * __Scroll.containerHeight;
-        const maxScrollBarPosition  = __Scroll.containerHeight - scrollBarHeight;
-        const scrollBarPosition     = (__Scroll.scrollPosition / (__Scroll.contentHeight - __Scroll.containerHeight)) * maxScrollBarPosition;
-        
-        scrollBar.style.height      = `${scrollBarHeight}px`;
-        scrollBar.style.transform   = `translateY(${scrollBarPosition}px)`;
+        if (!IS_MOBILE)
+        {
+            const scrollBarHeight       = (__Scroll.containerHeight / __Scroll.contentHeight) * __Scroll.containerHeight;
+            const maxScrollBarPosition  = __Scroll.containerHeight - scrollBarHeight;
+            const scrollBarPosition     = (__Scroll.scrollPosition / (__Scroll.contentHeight - __Scroll.containerHeight)) * maxScrollBarPosition;
+            
+            scrollBar.style.height      = `${scrollBarHeight}px`;
+            scrollBar.style.transform   = `translateY(${scrollBarPosition}px)`;
+        }
     }
 
 
@@ -183,13 +200,13 @@ document.addEventListener('DOMContentLoaded', () => {
     * @protected
     */
     function updateScrollPosition(delta) {
-        deltaOffSet = Math.abs(delta * __Scroll.scrollSpeed); // How much is offset on the wheel / ajust speed custom
+        deltaOffSet = Math.abs(delta * __Scroll.scrollAmountMove); // How much is offset on the wheel / ajust speed custom
         
         __Scroll.contentHeight = __Scroll.scrollContent.scrollHeight;
 
         if( __Scroll.activeScrollPage )
         {
-            __Scroll.scrollPosition += delta * __Scroll.scrollSpeed;
+            __Scroll.scrollPosition += delta * __Scroll.scrollAmountMove;
             __Scroll.scrollPosition = Math.max(0, Math.min(__Scroll.scrollPosition, __Scroll.contentHeight - __Scroll.containerHeight));
             __Scroll.scrollPosition = Math.round(__Scroll.scrollPosition);
 
@@ -212,22 +229,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
+    * Handle Wheel, Keys Events
+    */
+
+    if( !IS_MOBILE )
+    {
+        __Scroll.scrollContainer.addEventListener('wheel', scrollContainerWheel);
+        window.addEventListener('keydown', windowKeyDown);
+
+    }else{
+
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+
+            __Scroll.scrollPosition = scrollPosition;
+            updateParallax();
+            checkWayPoints();
+        });
+
+    }
+
+    
+
+
+
+
+
+    /**
     * Listener for scrolling with mouse.
     * @public
     */
-    __Scroll.scrollContainer.addEventListener('wheel', (e) =>
-    {
+    function scrollContainerWheel(e) {
         e.preventDefault();
         updateScrollPosition(e.deltaY);
-    });
+    }
 
 
     /**
     * Listener for scrolling with keyboard arrows.
     * @protected
     */
-    window.addEventListener('keydown', (e) =>
-    {
+    function windowKeyDown(e) {
         let delta = 0;
 
         if (e.key === 'ArrowUp') {
@@ -241,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault(); // Avoid default scrolling behavior with arrow keys
         __Scroll.activeScrollPage = true;
         updateScrollPosition(delta);
-    });
+    }
 
 
 
@@ -250,13 +292,27 @@ document.addEventListener('DOMContentLoaded', () => {
     * Script for ScrollBar
     */
 
-    createScrollBar();
+    if( !IS_MOBILE ) {
+        createScrollBar();
+
+        /**
+        * Handle Mouse Events
+        */
+    
+        scrollBar.addEventListener('mousedown', scrollBarMouseDown);
+        document.addEventListener('mousemove', documentMouseMove);
+        document.addEventListener('mouseup', documentMouseUp);
+    }
+
+
+    
+
 
     /**
     * Initial drag scroll bar - Event mouse down 
     * @protected
     */
-    scrollBar.addEventListener('mousedown', (e) => {
+    function scrollBarMouseDown(e) {
         isDragging = true;
         startY     = e.clientY;
         startScrollBarPosition = scrollBar.getBoundingClientRect().top - __Scroll.scrollContainer.getBoundingClientRect().top;
@@ -268,14 +324,14 @@ document.addEventListener('DOMContentLoaded', () => {
         __Scroll.activeScrollPage = true;
 
         cancelAnimationFrame(animationId);
-    });
+    }
 
 
     /**
     * Movement during dragging - Event mouse move
     * @protected
     */
-    document.addEventListener('mousemove', (e) => {
+    function documentMouseMove(e) {
         if (isDragging) {
             const deltaY                = e.clientY - startY;
             const scrollBarHeight       = scrollBar.offsetHeight;
@@ -298,17 +354,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 applyTransform(__Scroll.scrollPosition);
             });
         }
-    });
+    }
 
 
     /**
     * End drag - Event mouse up 
     * @protected
     */
-    document.addEventListener('mouseup', () => {
+    function documentMouseUp() {
         isDragging = false;
         scrollBar.classList.remove('is-dragging');
-    });
+    }
+
 
 
 
@@ -386,8 +443,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (__Scroll.scrollPosition >= (start - deltaOffSet) && __Scroll.scrollPosition <= (end + deltaOffSet))
                 {
-                    const progress = (__Scroll.scrollPosition - start) / (end - start); // PROGRESS BETWEEN 0 AND 1
-                    let translateX = progress * offset; // CALCULATES DISPLACEMENT BASED ON PROGRESS
+                    if (IS_MOBILE) offset = offset / 2; // Reduces displacement by half
+
+                    const progress = (__Scroll.scrollPosition - start) / (end - start); // Progress between 0 and 1
+                    let translateX = progress * offset; // Calculates displacement based on progress
                     translateX     = Math.round(translateX);
 
                     if( direction == "left" ){
@@ -438,7 +497,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout( () => {
         updateResizePage();
         updateScrollBar();
-        scrollToHashElement();
+        
+        if( __Scroll.URLhashListener ) scrollToHashListener();
 
         if( __Scroll.localhost ) scrollToHistoric();
 
@@ -461,7 +521,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateResizePage(){
         __Scroll.contentHeight     = __Scroll.scrollContent.scrollHeight;
-        __Scroll.containerHeight   = __Scroll.scrollContainer.clientHeight;
+
+        if( IS_MOBILE ){
+            __Scroll.containerHeight  = document.documentElement.clientHeight;
+        } else {
+            __Scroll.containerHeight  = __Scroll.scrollContainer.clientHeight;
+        }
 
         setStartParallaxLeft();
     }
@@ -493,7 +558,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Scrolls to the element matching the url hash
-    function scrollToHashElement() {
+    function scrollToHashListener() {
         const hash = window.location.hash;
 
         if (hash) {
