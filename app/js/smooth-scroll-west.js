@@ -15,13 +15,14 @@ var __Scroll = new Object();
 
 __Scroll.scrollAmountMove       = 1.2;    // Scroll speed
 __Scroll.scrollMoveTime         = 1100;   // Scroll movement time - ms
-__Scroll.wayPointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
+__Scroll.waypointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
 __Scroll.timeCheckWayPoint      = 700;    // Time to check the waypoint class when the scroll movement stops
 __Scroll.activeScrollPage       = true;   // Enable page scrolling
 __Scroll.debug                  = false;  // Mode debug
 __Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on 'header' tag
 __Scroll.localhost              = false;  // Mode development
 __Scroll.URLhashListener        = true;   // Move page still the id element
+__Scroll.activeWaypointAnim     = true;   // Enable entry animations class .waypoint
 
 
 /**
@@ -113,18 +114,22 @@ document.addEventListener('DOMContentLoaded', () => {
     * @protected
     */
     function checkWayPoints() {
-        if (waypoints.length > 0) {
-            waypoints.forEach(function(elm) {
-                const elementTop      = elm.getBoundingClientRect().top + __Scroll.scrollPosition;
-                const elementHeight   = elm.offsetHeight;
-                const viewportBottom  = __Scroll.scrollPosition + __Scroll.containerHeight;
-                const activationPoint = elementTop + elementHeight * __Scroll.wayPointPercShow;
 
-                if (viewportBottom >= activationPoint) {
-                    elm.classList.add('animated');
-                }
-            });
+        if( __Scroll.activeWaypointAnim ){
+            if (waypoints.length > 0) {
+                waypoints.forEach(function(elm) {
+                    const elementTop      = elm.getBoundingClientRect().top + __Scroll.scrollPosition;
+                    const elementHeight   = elm.offsetHeight;
+                    const viewportBottom  = __Scroll.scrollPosition + __Scroll.containerHeight;
+                    const activationPoint = elementTop + elementHeight * __Scroll.waypointPercShow;
+
+                    if (viewportBottom >= activationPoint) {
+                        elm.classList.add('animated');
+                    }
+                });
+            }
         }
+        
     }
 
 
@@ -217,8 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if( __Scroll.localhost ) localStorage.setItem("smooth-scroll-position", __Scroll.scrollPosition);
             
 
-            // Execute animation delay
-            scrollTimeout = setTimeout(checkWayPoints, __Scroll.timeCheckWayPoint);
+            if( __Scroll.activeWaypointAnim ){
+                // Execute 'checkWayPoints' for play in animation delay
+                scrollTimeout = setTimeout(checkWayPoints, __Scroll.timeCheckWayPoint);
+            }
 
             toggleMenuFixed();
 
