@@ -13,16 +13,16 @@ var __Scroll = new Object();
 * @public
 */
 
-__Scroll.scrollAmountMove       = 1.2;    // Scroll speed
-__Scroll.scrollMoveTime         = 1100;   // Scroll movement time - ms
-__Scroll.waypointPercShow       = 0.3;    // Adjust percentage to show elements on scroll
-__Scroll.timeCheckWayPoint      = 700;    // Time to check the waypoint class when the scroll movement stops
-__Scroll.activeScrollPage       = true;   // Enable page scrolling
-__Scroll.debug                  = false;  // Mode debug
-__Scroll.activeToggleMenuFixed  = true;   // Add or remove the class 'is-hide' on 'header' tag
-__Scroll.localhost              = false;  // Mode development
-__Scroll.URLhashListener        = true;   // Move page still the id element
-__Scroll.activeWaypointAnim     = true;   // Enable entry animations class .waypoint
+__Scroll.scrollAmountMove       = 1.2;    // {float} Changes the amount of page displacement when scrolling
+__Scroll.scrollMoveTime         = 1100;   // {int}   Scroll movement time - in milliseconds
+__Scroll.waypointPercShow       = 0.3;    // {float} Adjust percentage to show elements on scroll
+__Scroll.timeCheckWayPoint      = 700;    // {int}   Time to check the waypoint class when the scroll movement stops
+__Scroll.activeScrollPage       = true;   // {boolean} Enable page scrolling
+__Scroll.debug                  = false;  // {boolean} Mode debug
+__Scroll.activeToggleMenuFixed  = true;   // {boolean} Add or remove the class 'is-hide' on 'header' tag
+__Scroll.localhost              = false;  // {boolean} Mode development
+__Scroll.URLhashListener        = true;   // {boolean} Move page still the id element
+__Scroll.activeWaypointAnim     = true;   // {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
 
 
 /**
@@ -70,13 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
 
 
+    // Set height of container
     if( IS_MOBILE ){
         __Scroll.containerHeight = document.documentElement.clientHeight;
     } else {
         __Scroll.containerHeight = __Scroll.scrollContainer.clientHeight;
     }
 
-    __Scroll.contentHeight       = __Scroll.scrollContent.scrollHeight;
+    // Set height of content
+    __Scroll.contentHeight = __Scroll.scrollContent.scrollHeight;
 
 
     // Check ENV localhost
@@ -168,10 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if( __Scroll.scrollPosition > 50 )
         {
             headerTag.classList.add('is-compact');
-            if( !__Scroll.activeToggleMenuFixed ) headerTag.classList.add('is-hide');
+            if( __Scroll.activeToggleMenuFixed ) headerTag.classList.add('is-hide');
         }else{
             headerTag.classList.remove('is-compact');
-            if( !__Scroll.activeToggleMenuFixed ) headerTag.classList.remove('is-hide');
+            if( __Scroll.activeToggleMenuFixed ) headerTag.classList.remove('is-hide');
         }
 
 
@@ -245,9 +247,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // For Mobile
         window.addEventListener('scroll', () => {
-            const scrollPosition = window.scrollY;
+            const scrollPosition    = window.scrollY;
             __Scroll.scrollPosition = scrollPosition;
-            
+
             updateParallax();
             checkWayPoints();
             toggleMenuFixed();
@@ -468,6 +470,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    /**
+    * Set 'data-start' and 'data-end' for 'paraleft' class.
+    * @protected
+    */
     function setStartParallaxLeft() {
         if (parallaxLeftItems.length > 0)
         {
@@ -484,6 +490,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
+    /**
+    * Get height of element.
+    * @param {element DOM} element
+    * @protected
+    */
     function outerHeight(element) {
         const style        = window.getComputedStyle(element);
         const height       = element.getBoundingClientRect().height;
