@@ -71,18 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     if( IS_MOBILE ){
-        __Scroll.containerHeight  = document.documentElement.clientHeight;
+        __Scroll.containerHeight = document.documentElement.clientHeight;
     } else {
-        __Scroll.containerHeight  = __Scroll.scrollContainer.clientHeight;
+        __Scroll.containerHeight = __Scroll.scrollContainer.clientHeight;
     }
 
-    // console.log(__Scroll.containerHeight);
-
-    __Scroll.contentHeight        = __Scroll.scrollContent.scrollHeight;
-    // __Scroll.containerHeight      = __Scroll.scrollContainer.clientHeight;
+    __Scroll.contentHeight       = __Scroll.scrollContent.scrollHeight;
 
 
-    // CHECK ENV
+    // Check ENV localhost
     if ( window.location.href.includes("localhost") && !IS_MOBILE ) {
         __Scroll.localhost = true;
     }
@@ -129,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }
-        
+
     }
 
 
@@ -176,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
             headerTag.classList.remove('is-compact');
             if( !__Scroll.activeToggleMenuFixed ) headerTag.classList.remove('is-hide');
         }
-          
+
 
 
         if( __Scroll.activeToggleMenuFixed )
@@ -246,12 +243,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }else{
 
+        // For Mobile
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
-
             __Scroll.scrollPosition = scrollPosition;
+            
             updateParallax();
             checkWayPoints();
+            toggleMenuFixed();
         });
 
     }
