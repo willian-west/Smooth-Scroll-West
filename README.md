@@ -19,7 +19,7 @@ Download the [latest release](https://github.com/willian-west/Smooth-Scroll-West
 Put the required stylesheet at the **top** of your markup:
 
 ```html
-<link rel="stylesheet" href="/your-assets/css/smooth-scroll.min.css" />
+<link rel="stylesheet" href="/your-assets/css/smooth-scroll-west.min.css" />
 ```
 
 
@@ -27,7 +27,7 @@ Put the required stylesheet at the **top** of your markup:
 Put the script at the **bottom** of your markup:
 
 ```html
-<script src="/your-assets/js/smooth-scroll.min.js"></script>
+<script src="/your-assets/js/smooth-scroll-west.min.js"></script>
 ```
 
 <br>

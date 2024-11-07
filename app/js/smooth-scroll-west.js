@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const waypoints               = document.querySelectorAll('.waypoint');
     const headerTag               = document.querySelector('header');
     const parallaxItems           = document.querySelectorAll('.js-parallax');
-    const parallaxLeftItems       = document.querySelectorAll('.js-paraleft');
+    const parallaxHorizItems      = document.querySelectorAll('.js-parallax-h');
+    const parallaxZoomItems       = document.querySelectorAll('.js-parallax-z');
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
 
 
@@ -384,6 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateParallax() {
 
+        // VERTICAL
         if (parallaxItems.length > 0) {
 
             parallaxItems.forEach(item =>
@@ -433,9 +435,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        if (parallaxLeftItems.length > 0)
+        // HORIZONTAL
+        if (parallaxHorizItems.length > 0)
         {
-            parallaxLeftItems.forEach(item => {
+            parallaxHorizItems.forEach(item => {
                 let direction  = "left";
                 const start    = parseInt(item.getAttribute('data-start'));
                 const end      = parseInt(item.getAttribute('data-end'));
@@ -463,7 +466,33 @@ document.addEventListener('DOMContentLoaded', () => {
                         item.style.transform = `translateX(${translateX}px)`;
                     }
 
-                    if( __Scroll.debug ) console.log('Paraleft PosX: '+translateX);
+                    if( __Scroll.debug ) console.log('Parallax PosX: '+translateX);
+                }
+            });
+        }
+
+
+        // ZOOM
+        if (parallaxZoomItems.length > 0)
+        {
+            parallaxZoomItems.forEach(item => {
+                const start    = parseInt(item.getAttribute('data-start'));
+                const end      = parseInt(item.getAttribute('data-end'));
+                let offset     = parseInt(item.getAttribute('data-offset'));
+
+                if( isNaN(offset) ){
+                    offset = 30;
+                    warn("Element '"+ item.className +"' is missing the required 'data-offset' attribute.");
+                }
+
+                if (__Scroll.scrollPosition >= (start - deltaOffSet) && __Scroll.scrollPosition <= (end + deltaOffSet))
+                {
+                    const progress = (__Scroll.scrollPosition - start) / (end - start); // Progress between 0 and 1
+                    let scale = (progress * (offset/100)) + 1; // Calculates displacement based on progress
+
+                    item.style.transform = `scale(${scale})`;
+
+                    if( __Scroll.debug ) console.log('Parallax Scale: '+scale);
                 }
             });
         }
@@ -471,20 +500,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     /**
-    * Set 'data-start' and 'data-end' for 'paraleft' class.
+    * Set 'data-start' and 'data-end' for 'parallax-h' class.
     * @protected
     */
-    function setStartParallaxLeft() {
-        if (parallaxLeftItems.length > 0)
+    function setStartParallaxHoriz() {
+        if (parallaxHorizItems.length > 0)
         {
-            parallaxLeftItems.forEach(item =>
+            parallaxHorizItems.forEach(item =>
             {
                 const itemHeight = outerHeight(item);
                 const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight - itemHeight);
                 const dataEnd    = dataStart + __Scroll.containerHeight + itemHeight;
 
-                item.setAttribute('data-start', dataStart);
-                item.setAttribute('data-end', dataEnd);
+                item.setAttribute('data-start', Math.round(dataStart));
+                item.setAttribute('data-end', Math.round(dataEnd));
+            });
+        }
+
+        if (parallaxZoomItems.length > 0)
+        {
+            parallaxZoomItems.forEach(item =>
+            {
+                const itemHeight = outerHeight(item);
+                const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight - itemHeight);
+                const dataEnd    = dataStart + __Scroll.containerHeight + itemHeight;
+
+                item.setAttribute('data-start', Math.round(dataStart));
+                item.setAttribute('data-end', Math.round(dataEnd));
             });
         }
     }
@@ -545,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
             __Scroll.containerHeight  = __Scroll.scrollContainer.clientHeight;
         }
 
-        setStartParallaxLeft();
+        setStartParallaxHoriz();
     }
 
 
