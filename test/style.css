@@ -127,6 +127,10 @@ nav{
     animation: float_01 4s ease-in-out infinite;
 }
 
+.wrap-img{
+    overflow: hidden;
+}
+
 @keyframes float_01 {
     0%   { transform: translateY(0); }
     50%  { transform: translateY(20px); }
