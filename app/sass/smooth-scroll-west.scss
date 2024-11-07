@@ -70,7 +70,7 @@
     }
 }
 
-.js-parallax, .js-parallax-h, , .js-parallax-z {
+.js-parallax, .js-parallax-h, .js-parallax-z {
     transition: transform var(--smooth-time-scroll-page) var(--ease-animation-smooth);
     will-change: transform;
 }
