@@ -43,12 +43,12 @@
                                 </a>
                             </div>
                         
-                            <div id="navbarBasicExample" class="navbar-menu">
+                            <div class="navbar-menu">
                                 <div class="navbar-end">
-                                    <a class="navbar-item" href="index.html"> Home </a>
+                                    <a class="navbar-item is-active" href="index.html"> Home </a>
                                     <a class="navbar-item" href="demos.html"> Demos </a>
-                                    <a class="navbar-item" href="demos.html"> Docs </a>
-                                    <a class="navbar-item" href="demos.html"> Download </a>
+                                    <a class="navbar-item" href="docs.html"> Docs </a>
+                                    <a class="navbar-item" href=""> Download </a>
                                 </div>
                             </div>
                         </nav>
@@ -97,6 +97,7 @@
                         <ul class="pt-4 pb-3">
                             <li><strong>Vertical</strong> parallax</li>
                             <li><strong>Horizontal</strong> parallax</li>
+                            <li><strong>Zoom</strong> parallax</li>
                             <li>Anchoring, <strong>moving the page</strong> to a certain point, indicated <strong>by ID</strong>.</li>
                             <li>Reading the <strong>URL hash</strong> [ domain.com/<strong>#contact</strong> ] to move to the indicated <strong></strong>element ID</strong>.</li>
                         </ul>
@@ -106,13 +107,17 @@
                         <hr>
                     
 
-
-
                         <h1 class="mt-5 pt-6 pb-6">Some <span class="has-text-info">Parallax</span> Demos</h1>
 
                     </div>
 
                 </div>
+
+
+
+
+
+
 
 
                 <div class="font-big mt-6 pt-6 pb-6">
@@ -122,7 +127,12 @@
                 </div>
 
 
-                <div class="container mt-6">
+
+
+
+
+
+                <div class="container mt-6 mb-6 pb-6">
 
                     <div class="content is-large mt-5">
 
@@ -134,7 +144,7 @@
                             <div class="columns is-vcentered is-centered mt-6">
                                 <div class="column is-6">
                                     <div class="wrap-img">
-                                        <img class="js-parallax-z" data-offset="50"
+                                        <img class="js-parallax-z" data-zoom="40"
                                             src="https://placehold.co/684x400/222834/14161a/jpg"
                                             alt="Placeholder image"
                                         />
@@ -149,7 +159,13 @@
                             </div>
 
                             <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code> <span><</span>h2 class="js-parallax" data-start="-50" data-end="50">  </code></pre>
+                            <pre><code>
+                                <span><</span>h2                                 
+                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax"</span> 
+                                <span class="has-text-info">data-start</span>=<span class="has-text-warning">"-50"</span> 
+                                <span class="has-text-info">data-end</span>=<span class="has-text-warning">"50"</span>
+                            >
+                            </code></pre>
                         </div>
 
 
@@ -173,7 +189,20 @@
                             </div>
                             
                             <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code> <span><</span>img class="js-parallax" data-start="-50" data-end="50"> </code></pre>
+
+                            <pre><code>
+                                <span><</span>img                                 
+                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax"</span> 
+                                <span class="has-text-info">data-start</span>=<span class="has-text-warning">"-50"</span> 
+                                <span class="has-text-info">data-end</span>=<span class="has-text-warning">"50"</span>
+                            >
+                            </code></pre>
+                        </div>
+
+
+
+                        <div class="has-text-centered mt-6 mb-6">
+                            <a href="demos.html" class="button is-info is-medium is-rounded mt-6">See More Examples</a>
                         </div>
                     
                     </div>
@@ -184,13 +213,10 @@
 
                 
 
-                <br><br><br><br>
-                <br><br><br><br>
-                <br><br><br><br>
 
 
 
-                <footer class="footer">
+                <footer class="footer mt-6">
                     <div class="content has-text-centered">
                         <p>
                             <strong>Smooth Scroll West</strong> by <a href="https://willianwest.com" class="has-text-info">Willian West</a>.

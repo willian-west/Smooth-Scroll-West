@@ -476,19 +476,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parallaxZoomItems.length > 0)
         {
             parallaxZoomItems.forEach(item => {
-                const start    = parseInt(item.getAttribute('data-start'));
-                const end      = parseInt(item.getAttribute('data-end'));
-                let offset     = parseInt(item.getAttribute('data-offset'));
+                const start = parseInt(item.getAttribute('data-start'));
+                const end   = parseInt(item.getAttribute('data-end'));
+                let zoom    = parseInt(item.getAttribute('data-zoom'));
 
-                if( isNaN(offset) ){
-                    offset = 30;
-                    warn("Element '"+ item.className +"' is missing the required 'data-offset' attribute.");
+                if( isNaN(zoom) ){
+                    zoom = 20;
+                    warn("Element '"+ item.className +"' is missing the required 'data-zoom' attribute. Value between 1 and 100");
                 }
 
                 if (__Scroll.scrollPosition >= (start - deltaOffSet) && __Scroll.scrollPosition <= (end + deltaOffSet))
                 {
                     const progress = (__Scroll.scrollPosition - start) / (end - start); // Progress between 0 and 1
-                    let scale = (progress * (offset/100)) + 1; // Calculates displacement based on progress
+                    let scale = (progress * (zoom/100)) + 1; // Calculates zoom based on progress
 
                     item.style.transform = `scale(${scale})`;
 

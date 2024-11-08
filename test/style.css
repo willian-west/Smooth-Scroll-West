@@ -29,11 +29,11 @@ p, li{
 
 
 .has-text-info{
-    color: #27e3ff !important;
+    color: #25cde7 !important;
 }
 
 .is-info{
-    background-color: #27e3ff !important;
+    background-color: #25cde7 !important;
 }
 
 p small{
@@ -41,11 +41,11 @@ p small{
 }
 
 h1{
-    font-size: 8vw;
+    font-size: 7vw;
 }
 
 h1 small{
-    font-size: 0.56em;
+    font-size: 0.6em;
 }
 
 header{
@@ -61,6 +61,11 @@ footer{
 .navbar-item{
     padding-left: 1.2rem;
     padding-right: 1.2rem;
+}
+
+.navbar-item.is-active{
+    background-color: #1b1e24;
+    color: #25cde7;
 }
 
 nav{
@@ -85,15 +90,17 @@ nav{
 }
 
 .t1, .t2, .t3{
-    background: #27e3ff;
-    background: linear-gradient(to right, #27e3ff 0%, #333 100%);
+    background: #25cde7;
+    background: linear-gradient(to right, #25cde7 0%, #0d4a53 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 .t3{
-    background: #27e3ff;
-    background: linear-gradient(to right, #27e3ff 50%, #333 100%);
+    background: #25cde7;
+    background: linear-gradient(to right, #25cde7 50%, #0d4a53 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -129,6 +136,10 @@ nav{
 
 .wrap-img{
     overflow: hidden;
+}
+
+pre{
+    white-space: normal !important;
 }
 
 @keyframes float_01 {
