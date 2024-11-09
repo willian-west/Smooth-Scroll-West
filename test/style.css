@@ -32,6 +32,10 @@ p, li{
     color: #25cde7 !important;
 }
 
+.has-text-warning{
+    color: #e76e35 !important;
+}
+
 .is-info{
     background-color: #25cde7 !important;
 }
@@ -89,7 +93,7 @@ nav{
     margin-left: 300px;
 }
 
-.t1, .t2, .t3{
+.t1, .t2{
     background: #25cde7;
     background: linear-gradient(to right, #25cde7 0%, #0d4a53 100%);
     background-clip: text;
@@ -97,12 +101,17 @@ nav{
     -webkit-text-fill-color: transparent;
 }
 
-.t3{
+/* .t3{
     background: #25cde7;
     background: linear-gradient(to right, #25cde7 50%, #0d4a53 100%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+} */
+
+.hero{
+    margin-top: 130px;
+    margin-bottom: 60px;
 }
 
 /* .t3{
@@ -140,6 +149,7 @@ nav{
 
 pre{
     white-space: normal !important;
+    font-size: .8em;
 }
 
 @keyframes float_01 {

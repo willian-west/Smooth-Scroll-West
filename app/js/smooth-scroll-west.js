@@ -13,16 +13,37 @@ var __Scroll = new Object();
 * @public
 */
 
-__Scroll.scrollAmountMove       = 1.2;    // {float} Changes the amount of page displacement when scrolling
-__Scroll.scrollMoveTime         = 1100;   // {int}   Scroll movement time - in milliseconds
-__Scroll.waypointPercShow       = 0.3;    // {float} Adjust percentage to show elements on scroll
-__Scroll.timeCheckWayPoint      = 700;    // {int}   Time to check the waypoint class when the scroll movement stops
-__Scroll.activeScrollPage       = true;   // {boolean} Enable page scrolling
-__Scroll.debug                  = false;  // {boolean} Mode debug
-__Scroll.activeToggleMenuFixed  = true;   // {boolean} Add or remove the class 'is-hide' on 'header' tag
-__Scroll.localhost              = false;  // {boolean} Mode development
-__Scroll.URLhashListener        = true;   // {boolean} Move page still the id element
-__Scroll.activeWaypointAnim     = true;   // {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
+// {float} Changes the amount of page displacement when scrolling
+__Scroll.scrollAmountMove = 1.2;
+
+// {int}   Scroll movement time - in milliseconds
+__Scroll.scrollMoveTime = 1100;
+
+// {float} Adjust percentage to show elements on scroll
+__Scroll.waypointPercShow = 0.3;
+
+// {int}   Time to check the waypoint class when the scroll movement stops
+__Scroll.timeCheckWayPoint = 700;
+
+// {boolean} Enable page scrolling
+__Scroll.activeScrollPage = true;
+
+// {boolean} Mode debug
+__Scroll.debug = false;
+
+// {boolean} Add or remove the class 'is-hide' on 'header' tag
+__Scroll.activeToggleMenuFixed = true;
+
+// {boolean} Mode development
+__Scroll.localhost = false;
+
+// {boolean} Move page still the id element
+__Scroll.URLhashListener = true;
+
+// {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
+__Scroll.activeWaypointAnim = true;
+
+
 
 
 /**
@@ -63,12 +84,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let deltaOffSet               = 0;
     let smoothScrollPage          = localStorage.getItem("smooth-scroll-page");
     let smoothScrollLocalPosition = parseFloat(localStorage.getItem("smooth-scroll-position")) || 0;
-    const waypoints               = document.querySelectorAll('.waypoint');
-    const headerTag               = document.querySelector('header');
     const parallaxItems           = document.querySelectorAll('.js-parallax');
     const parallaxHorizItems      = document.querySelectorAll('.js-parallax-h');
     const parallaxZoomItems       = document.querySelectorAll('.js-parallax-z');
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
+    const waypoints               = document.querySelectorAll('.waypoint');
+    const headerTag               = document.querySelector('header');
 
 
     // Set height of container
@@ -556,6 +577,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout( () => {
         updateResizePage();
         updateScrollBar();
+
+        if( __Scroll.scrollMoveTime != 1100 ){
+            let html = document.documentElement;
+            html.style.setProperty('--smooth-time-scroll-page', (__Scroll.scrollMoveTime/1000)+'s');
+        }
+
         
         if( __Scroll.URLhashListener ) scrollToHashListener();
 
@@ -579,12 +606,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function updateResizePage(){
-        __Scroll.contentHeight     = __Scroll.scrollContent.scrollHeight;
+        __Scroll.contentHeight = __Scroll.scrollContent.scrollHeight;
 
         if( IS_MOBILE ){
-            __Scroll.containerHeight  = document.documentElement.clientHeight;
+            __Scroll.containerHeight = document.documentElement.clientHeight;
         } else {
-            __Scroll.containerHeight  = __Scroll.scrollContainer.clientHeight;
+            __Scroll.containerHeight = __Scroll.scrollContainer.clientHeight;
         }
 
         setStartParallaxHoriz();
@@ -598,6 +625,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if( smoothScrollPage !== window.location.href )
         {
+            // SAVE LOCAL
             localStorage.setItem("smooth-scroll-page", window.location.href);
         }
         else
