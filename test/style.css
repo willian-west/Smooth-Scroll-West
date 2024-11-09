@@ -114,6 +114,10 @@ nav{
     margin-bottom: 60px;
 }
 
+.hero-body{
+    border-left: 5px solid #25cde7;
+}
+
 /* .t3{
     background: linear-gradient(
         to right,
@@ -143,8 +147,16 @@ nav{
     animation: float_01 4s ease-in-out infinite;
 }
 
-.wrap-img{
+.wrap-img, .wrap-img-v, .wrap-img-v2{
     overflow: hidden;
+}
+
+.wrap-img-v{
+    height: 650px;
+}
+
+.wrap-img-v2{
+    height: 500px;
 }
 
 pre{
