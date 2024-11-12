@@ -62,10 +62,10 @@
 
 
                 <div class="container mb-6">
-                    <h1 class="mt-6 has-text-info">Getting Started</h1>
+                    <h1 class="mt-6 has-text-info">Getting <span class="has-text-warning">Started</span></h1>
 
                     <div class="content is-large mt-1">
-                        <p class="mb-6">No matter if you are a beginner or an advanced user, starting with <strong>SSW</strong> is easy..</p>
+                        <p class="mb-6">No matter if you are a beginner or an advanced user, starting with <strong class="has-text-warning">SSW</strong> is easy..</p>
 
                         <div class="pt-1"></div>
 
@@ -89,204 +89,35 @@
 
                     <div class="content is-large">
 
-                        <h2 class="mt-6 pt-6"><span class="has-text-info">Parallax</span> Vertical</h2>
-
-                        <div class="pt-4 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <div class="wrap-img">
-                                        <img src="https://placehold.co/684x340/222834/14161a/jpg" alt=""/>
-                                    </div>
-                                </div>
-
-                                <div class="column is-5 pl-6">
-                                    <h2 class="js-parallax" data-start="-50" data-end="50">Title with <span class="has-text-info">Parallax</span></h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code>
-                                <span><</span>h2                                 
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax"</span> 
-                                <span class="has-text-info">data-start</span>=<span class="has-text-warning">"-50"</span> 
-                                <span class="has-text-info">data-end</span>=<span class="has-text-warning">"50"</span>
-                            >
-                            </code></pre>
-                        </div>
+                        <h2 class="mt-6 pt-6"><span class="has-text-info">Ease</span> As</h2>
 
 
-                        <hr>
+                        <pre><code>
+
+                            <span><</span>body><br>
+
+                                <span class="ml-4"><</span>main <span class="has-text-info">class</span>=<span class="has-text-warning">"smooth-scroll-container"</span>><br>
+                                    <span class="ml-6"><</span>div <span class="has-text-info">class</span>=<span class="has-text-warning">"smooth-scroll-content"</span>><br>
+                                    <br>
+                                        <span class="ml-6 pl-4"><</span>!--- ALL YOUR CONTENT HERE --><br>
+                                    <br>
+                                    <span class="ml-6"><</span>/div><br>
+                                <span class="ml-4"><</span>/main><br>
+
+                                <span class="ml-4"><</span>!-- position: fixed elements can go outside --><br>
+
+                            <span><</span>/body>
+                            <br>
+
+                        </code></pre>
 
 
-                        <div class="pt-6 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <img class="js-parallax" data-start="-50" data-end="50" 
-                                        src="https://placehold.co/684x340/222834/14161a/jpg"
-                                        alt="Placeholder image"
-                                    />
-                                </div>
-
-                                <div class="column is-5 pl-6">
-                                    <h2>Image with <span class="has-text-info">Parallax</span></h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-                            
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-
-                            <pre><code>
-                                <span><</span>img                                 
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax"</span> 
-                                <span class="has-text-info">data-start</span>=<span class="has-text-warning">"-50"</span> 
-                                <span class="has-text-info">data-end</span>=<span class="has-text-warning">"50"</span>
-                            >
-                            </code></pre>
-                        </div>
-
-
-
-                        <hr>
-
-
-
-
-
-
-
-
-                        <h2 class="mt-6 pt-6"><span class="has-text-info">Parallax</span> Horizontal</h2>
-
-                        <div class="pt-4 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <div class="wrap-img">
-                                        <img src="https://placehold.co/684x340/222834/14161a/jpg" alt=""/>
-                                    </div>
-                                </div>
-
-                                <div class="column is-5 pl-6">
-                                    <h2 class="js-parallax-h" data-offset="150">Title with <span class="has-text-info">Parallax</span> left</h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code>
-                                <span><</span>h2                                 
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax-h"</span> 
-                                <span class="has-text-info">data-offset</span>=<span class="has-text-warning">"150"</span> 
-                            >
-                            </code></pre>
-                        </div>
-
-
-                        <hr>
-
-
-                        <div class="pt-6 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <img src="https://placehold.co/684x340/222834/14161a/jpg" alt="" />
-                                </div>
-
-                                <div class="column is-5 pl-6">
-                                    <h2 class="js-parallax-h" data-direction="right" data-offset="100" >Title with <span class="has-text-info">Parallax</span> right</h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-                            
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-
-                            <pre><code>
-                                <span><</span>h2                                 
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax-h"</span> 
-                                <span class="has-text-info">data-offset</span>=<span class="has-text-warning">"100"</span> 
-                                <span class="has-text-info">data-direction</span>=<span class="has-text-warning">"right"</span>
-                            >
-                            </code></pre>
-                        </div>
-
-
-
-                        <hr>
-
-
-
-
-
-                        <div class="pt-6 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <img 
-                                        class="js-parallax-h" data-direction="right" data-offset="100"
-                                        src="https://placehold.co/684x340/222834/14161a/jpg" alt="" />
-                                </div>
-
-                                <div class="column is-5 pl-6 is-relative">
-                                    <h2>Image <span class="has-text-info">Parallax</span> right</h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-                            
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-
-                            <pre><code>
-                                <span><</span>h2                                 
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax-h"</span> 
-                                <span class="has-text-info">data-offset</span>=<span class="has-text-warning">"100"</span> 
-                                <span class="has-text-info">data-direction</span>=<span class="has-text-warning">"right"</span>
-                            >
-                            </code></pre>
-                        </div>
-
-
-
-                        <hr>
-
-
-
-
-
-
-                        <h2 class="mt-6 pt-6"><span class="has-text-info">Parallax</span> Zoom</h2>
                         
-                        <div class="pt-4 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <img class="js-parallax-z" data-zoom="15"
-                                        src="https://placehold.co/684x340/222834/14161a/jpg"
-                                        alt="Placeholder image"
-                                    />
-                                </div>
-
-                                <div class="column is-5 pl-6">
-                                    <h2>Image with <span class="has-text-info">Zoom</span></h2>
-
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
-                            </div>
-
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code>
-                                <span><</span>img                            
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax-z"</span> 
-                                <span class="has-text-info">data-zoom</span>=<span class="has-text-warning">"15"</span> 
-                            >
-                            </code></pre>
-                        </div>
 
 
 
-
-                        <hr>
-
+                        
+<!-- 
 
                         
                         <div class="pt-6 mb-6">
@@ -315,7 +146,7 @@
                                 <span class="has-text-info">data-zoom</span>=<span class="has-text-warning">"40"</span> 
                             >
                             </code></pre>
-                        </div>
+                        </div> -->
 
 
 

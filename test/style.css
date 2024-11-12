@@ -96,6 +96,7 @@ nav{
 .t1, .t2{
     background: #25cde7;
     background: linear-gradient(to right, #25cde7 0%, #0d4a53 100%);
+    /* background: url(img1.webp); */
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
