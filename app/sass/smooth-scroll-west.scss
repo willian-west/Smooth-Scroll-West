@@ -68,6 +68,14 @@
         width: 0px;
         background: transparent;
     }
+
+    .map-iframe {
+        pointer-events: none;
+    }
+    
+    .map-container.active .map-iframe {
+        pointer-events: auto;
+    }
 }
 
 .js-parallax, .js-parallax-h, .js-parallax-z {
