@@ -160,6 +160,14 @@ nav{
     height: 500px;
 }
 
+.map-iframe {
+    pointer-events: none; /* Desativa a interação do iframe por padrão */
+}
+
+.map-container.active .map-iframe {
+    pointer-events: auto; /* Permite interagir com o iframe quando ativado */
+}
+
 pre{
     white-space: normal !important;
     font-size: .8em;

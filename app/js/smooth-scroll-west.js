@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let animationId;
     let timeDelayInitial          = 500;
     let isDragging                = false;
+    let isScrolling               = false;
     let startY                    = 0;
     let startScrollBarPosition    = 0;
     let deltaOffSet               = 0;
@@ -90,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
     const waypoints               = document.querySelectorAll('.waypoint');
     const headerTag               = document.querySelector('header');
+    const mapContainers           = document.querySelectorAll('.map-container');
+    
 
 
     // Set height of container
@@ -136,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
     */
     function checkWayPoints() {
 
-        if( __Scroll.activeWaypointAnim ){
+        if ( __Scroll.activeWaypointAnim ) {
             if (waypoints.length > 0) {
                 waypoints.forEach(function(elm) {
                     const elementTop      = elm.getBoundingClientRect().top + __Scroll.scrollPosition;
@@ -150,6 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         }
+
+        isScrolling = false;
 
     }
 
@@ -232,6 +237,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if( __Scroll.activeScrollPage )
         {
+            isScrolling = true;
+            
             __Scroll.scrollPosition += delta * __Scroll.scrollAmountMove;
             __Scroll.scrollPosition = Math.max(0, Math.min(__Scroll.scrollPosition, __Scroll.contentHeight - __Scroll.containerHeight));
             __Scroll.scrollPosition = Math.round(__Scroll.scrollPosition);
@@ -249,6 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             toggleMenuFixed();
+
+            
+            if (mapContainers.length > 0) {
+                mapContainers.forEach((container) => container.classList.remove('active'));
+            }
 
             if( __Scroll.debug ) console.log('Scroll Page: '+__Scroll.scrollPosition);
             //console.log('delta: '+delta);
@@ -725,6 +737,29 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+
+
+
+    // IFRAME MAP
+    if (mapContainers.length > 0) {
+
+        mapContainers.forEach((mapContainer) => {
+            mapContainer.addEventListener('mouseenter', function () {
+                if (!isScrolling) {
+                    mapContainer.classList.add('active');
+                }
+            });
+    
+            mapContainer.addEventListener('mouseleave', function () {
+                mapContainer.classList.remove('active');
+            });
+        });
+
+    }
+
+
+
 });
 
 
