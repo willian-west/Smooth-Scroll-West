@@ -69,6 +69,10 @@
         background: transparent;
     }
 
+    .map-container {
+        overflow: hidden;
+    }
+
     .map-iframe {
         pointer-events: none;
     }

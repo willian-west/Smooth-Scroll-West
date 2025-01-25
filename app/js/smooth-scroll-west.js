@@ -37,9 +37,6 @@ __Scroll.activeToggleMenuFixed = true;
 // {boolean} Mode development
 __Scroll.localhost = false;
 
-// {boolean} Move page still the id element
-__Scroll.URLhashListener = true;
-
 // {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
 __Scroll.activeWaypointAnim = true;
 
@@ -85,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let deltaOffSet               = 0;
     let smoothScrollPage          = localStorage.getItem("smooth-scroll-page");
     let smoothScrollLocalPosition = parseFloat(localStorage.getItem("smooth-scroll-position")) || 0;
+    let hasURLhash                = false;
     const parallaxItems           = document.querySelectorAll('.js-parallax');
     const parallaxHorizItems      = document.querySelectorAll('.js-parallax-h');
     const parallaxZoomItems       = document.querySelectorAll('.js-parallax-z');
@@ -596,7 +594,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         
-        if( __Scroll.URLhashListener ) scrollToHashListener();
+        scrollToHashListener();
 
         if( __Scroll.localhost ) scrollToHistoric();
 
@@ -632,42 +630,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    // Scrolls to the element matching the url hash
-    function scrollToHistoric() {
-
-        if( smoothScrollPage !== window.location.href )
-        {
-            // SAVE LOCAL
-            localStorage.setItem("smooth-scroll-page", window.location.href);
-        }
-        else
-        {
-            if (!isNaN(smoothScrollLocalPosition))
-            {
-                __Scroll.scrollPosition = smoothScrollLocalPosition;
-                applyTransform(smoothScrollLocalPosition);
-                updateScrollBar();
-
-                setTimeout( checkWayPoints(), __Scroll.scrollMoveTime);
-            }
-        }
-    }
-
-
-
+    
 
     // Scrolls to the element matching the url hash
     function scrollToHashListener() {
-        const hash = window.location.hash;
 
-        if (hash) {
-            const elementId = hash.slice(1);  // Remove '#' from the beginning of the hash
-            const element   = document.getElementById(elementId);
+        const hash = window.location.hash.replace('#', ''); // Remove '#' hash
 
-            if (element) {
-                __Scroll.smoothScrollTo(`#${elementId}`);  // Scrolls to the element with the id
+        if (hash)
+        {
+            hasURLhash = true;
 
-                __Scroll.scrollPosition = __Scroll.getOffsetTop(`#${elementId}`);
+            const target = document.querySelector(`[scroll-id="${hash}"]`);
+
+            if (target)
+            {
+                __Scroll.smoothScrollTo(target);  // Scrolls to the element
+
+                __Scroll.scrollPosition = __Scroll.getOffsetTop(target);
 
                 if( headerTag != null ) headerTag.classList.add('is-hide');
 
@@ -678,6 +658,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+
+
+
+    // Moves the scroll to the position the page was in when refreshed
+    function scrollToHistoric() {
+
+        if (!hasURLhash)
+        {
+            if( smoothScrollPage !== window.location.href )
+            {
+                // SAVE LOCAL
+                localStorage.setItem("smooth-scroll-page", window.location.href);
+            }
+            else
+            {
+                if (!isNaN(smoothScrollLocalPosition))
+                {
+                    __Scroll.scrollPosition = smoothScrollLocalPosition;
+                    applyTransform(smoothScrollLocalPosition);
+                    updateScrollBar();
+
+                    setTimeout( checkWayPoints(), __Scroll.scrollMoveTime);
+                }
+            }
+        }
+    }
+
+
 
 
 
@@ -745,6 +754,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mapContainers.length > 0) {
 
         mapContainers.forEach((mapContainer) => {
+
             mapContainer.addEventListener('mouseenter', function () {
                 if (!isScrolling) {
                     mapContainer.classList.add('active');
