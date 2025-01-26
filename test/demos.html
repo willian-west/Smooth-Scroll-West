@@ -454,6 +454,87 @@
 
 
 
+    
+                        <section class="hero is-dark" scroll-id="zoom">
+                            <div class="hero-body">
+                                <h2 class="title is-1"><span class="has-text-info">Scroll to </span> Section</h2>
+                                <p class="subtitle">Examples</p>
+                            </div>
+                        </section>
+
+                        <p>The library supports smooth scrolling for elements based on <code>id</code>, for links on the same page.<br>
+                            Add the <code>smooth-scroll-link</code> class to the desired link. Make sure your target element has the corresponding <code>id</code> attribute.</p>
+                        
+                        
+                        <div class="pt-4 mb-6">
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+
+                                &lt;a href="<span class="has-text-warning">#contact</span>" <span class="has-text-info">class=</span><span class="has-text-warning">"smooth-scroll-link"</span>>Contact&lt;/a>
+                                
+                            </code></pre>
+
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;section <span class="has-text-info">id=</span><span class="has-text-warning">"contact"</span>>&lt;/section>
+                            </code></pre>
+                        </div>
+
+
+                        <p class="">Click the button below:</p>
+                        <a href="#link1" class="button is-info is-medium smooth-scroll-link">Section 1</a>
+                        <a href="#link2" class="button is-info is-medium smooth-scroll-link" data-smooth-time-link="4000">Section 2 with custom time of 4000ms</a>
+
+                        <div style="height: 600px;"></div>
+
+
+                        <div id="link1" class="mb-6">
+                            <h2 class="title is-1"><span class="has-text-info">Section</span> 1</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>
+                                Eum vel nemo corporis impedit inventore deserunt error aut<br>
+                                quaerat accusamus, soluta iusto libero, beatae porro ipsa labore,<br>
+                                ommodi quidem repudiandae architecto?
+                            </p>
+
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;section <span class="has-text-info">id=</span><span class="has-text-warning">"link1"</span>>&lt;/section>
+                            </code></pre>
+                        </div>
+
+                        <hr>
+
+                        <div id="link2" class="mt-6">
+                            <h2 class="title is-1"><span class="has-text-info">Section</span> 2</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>
+                                Eum vel nemo corporis impedit inventore deserunt error aut<br>
+                                quaerat accusamus, soluta iusto libero, beatae porro ipsa labore,<br>
+                                ommodi quidem repudiandae architecto?
+                            </p>
+
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;section <span class="has-text-info">id=</span><span class="has-text-warning">"link2"</span>>&lt;/section>
+                            </code></pre>
+                        </div>
+
+                        <hr>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                         <div class="has-text-centered mt-6 mb-6">
                             <a href="docs.html" class="button is-info is-medium is-rounded mt-6">Docs</a>
@@ -488,8 +569,7 @@
 
 
 
-        <!-- <script src="../assets/js/smooth-scroll.min.js"></script> -->
-        <script src="../app/js/smooth-scroll-west.js"></script>
+        <script src="../assets/js/smooth-scroll-west.min.js"></script>
 
     </body>
 </html>

@@ -711,6 +711,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const elementId = link.slice(1);  // REMOVE '#' FROM THE BEGINNING OF THE HASH
                     const element   = document.getElementById(elementId);
         
+                    console.log(attrLink);
+
                     if (element)
                     {
                         if( attrLink != null && attrLink != "" ) timeLink = attrLink;
@@ -718,9 +720,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         let timeLinkSec = timeLink / 1000; // CONVERT SECONDS
 
                         // APPLY PROP CSS
-                        scrollBar.style.setProperty('--time-scroll-page', timeLinkSec+'s');
+                        scrollBar.style.setProperty('--smooth-time-scroll-page', timeLinkSec+'s');
                         scrollBar.classList.add('is-link');
-                        __Scroll.scrollContent.style.setProperty('--time-scroll-page', timeLinkSec+'s');
+                        __Scroll.scrollContent.style.setProperty('--smooth-time-scroll-page', timeLinkSec+'s');
                         __Scroll.scrollContent.classList.add('is-link');
                         
                         if( headerTag != null ) headerTag.classList.add('is-hide');
@@ -738,8 +740,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                             // REMOVE PROP CSS
                             __Scroll.scrollContent.classList.remove('is-link');
-                            __Scroll.scrollContent.style.removeProperty('--time-scroll-page');
-                            scrollBar.style.removeProperty('--time-scroll-page');
+                            __Scroll.scrollContent.style.removeProperty('--smooth-time-scroll-page');
+                            scrollBar.style.removeProperty('--smooth-time-scroll-page');
                             scrollBar.classList.remove('is-link');
 
                             __Scroll.activeScrollPage = true; // ENABLE SCROLLING MOUSE

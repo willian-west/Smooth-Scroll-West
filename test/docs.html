@@ -81,7 +81,7 @@
 
                     <div class="content is-large">
 
-                        <h2 class="mt-6 pt-6"><span class="has-text-info">Ease</span> As</h2>
+                        <h2 class="mt-4 pt-6"><span class="has-text-info">Ease</span> As</h2>
 
 
                         <pre><code class="has-text-grey">
@@ -108,13 +108,15 @@
 
 
                         <div class="content is-large mt-6">
-                            <p class="mb-6">Welcome to the documentation for <strong class="has-text-warning">Smooth Scroll West</strong>! This library provides advanced smooth scrolling, parallax effects, and moving the page to a certain point. Below, you'll find detailed information on how to set up and use each feature.
+                            <p class="mb-6">Welcome to the documentation for <strong class="has-text-info">SSW</strong>. This library provides advanced smooth scrolling, parallax effects, and moving the page to a certain point. Below, you'll find detailed information on how to set up and use each feature.
                             <br><br>
                             <strong class="has-text-warning">Important information:</strong><br><br>
-                            For Mobile, Smooth Scroll West <strong class="has-text-danger">is disabled</strong> and the only function that still works is <span class="has-text-info">Parallax</span>.
+                            For Mobile, <strong class="has-text-info">SSW</strong> <strong class="has-text-danger">is disabled</strong> and the only function that still works is <span class="has-text-info">Parallax</span>.
                             </p>
                             <hr>
                         </div>
+
+                       
 
 
 
@@ -122,7 +124,12 @@
                         <!-- Getting Started Section -->
                         <section id="getting-started" class="container mb-6">
 
-                            <h1 class="mt-6 has-text-info">First <span class="has-text-warning">Step</span></h1>
+                            <section class="hero is-dark">
+                                <div class="hero-body">
+                                    <h2 class="title is-1"><span class="has-text-info">First</span> Step</h2>
+                                    <p class="subtitle">Let's go</p>
+                                </div>
+                            </section>
 
                             <div class="content is-large mt-5">
                                 <p>To get started with <strong>Smooth Scroll West</strong>, make sure your HTML structure includes the required elements listed above.</p>
@@ -186,20 +193,25 @@
                                 <p>Add parallax effects to your elements using the following classes:</p>
 
                                 <ul>
-                                    <li><code>js-parallax</code>: Vertical parallax (requires <code>data-start</code> and <code>data-end</code> attributes).</li>
-                                    <li><code>js-parallax-h</code>: Horizontal parallax (requires <code>data-offset</code> and optional <code>data-direction</code> attributes).</li>
-                                    <li><code>js-parallax-z</code>: Zoom parallax (requires <code>data-zoom</code> attribute).</li>
+                                    <li><code>js-parallax</code>: Vertical parallax (requires <code>data-start</code> and <code>data-end</code> attributes). Value in pixels.</li>
+                                    <li><code>js-parallax-h</code>: Horizontal parallax (requires <code>data-offset</code> and optional <code>data-direction</code> attributes). Value in pixels.</li>
+                                    <li><code>js-parallax-z</code>: Zoom parallax (requires <code>data-zoom</code> attribute). Value from <code>1</code> to <code>100</code>.</li>
                                 </ul>
 
-                                <p>Example for vertical parallax:</p>
+                                <p class="mt-6">Example for vertical parallax:</p>
 
                                 <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
                                 <pre><code>&lt;div <span class="has-text-info">class=</span><span class="has-text-warning">"js-parallax"</span> <span class="has-text-info">data-start=</span><span class="has-text-warning">"-100"</span> <span class="has-text-info">data-end=</span><span class="has-text-warning">"100"</span>>&lt;/div></code></pre>
 
-                                <p>Example for horizontal parallax:</p>
+                                <p class="mt-6">Example for horizontal parallax:</p>
 
                                 <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
                                 <pre><code>&lt;div <span class="has-text-info">class=</span><span class="has-text-warning">"js-parallax-h"</span> <span class="has-text-info">data-offset=</span><span class="has-text-warning">"200"</span>  <span class="has-text-info">data-direction=</span><span class="has-text-warning">"right"</span>>&lt;/div></code></pre>
+
+                                <p class="mt-6">Example for zoom parallax:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;div <span class="has-text-info">class=</span><span class="has-text-warning">"js-parallax-z"</span> <span class="has-text-info">data-zoom=</span><span class="has-text-warning">"20"</span>>&lt;/div></code></pre>
                             </div>
 
                         </section>
@@ -227,8 +239,6 @@
                                 <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code MOBILE</span>
                                 <pre><code>&lt;div <span class="has-text-info">id=</span><span class="has-text-warning">"contact"</span>>Contact Section&lt;/div></code></pre>
 
-
-                                
                             </div>
 
                         </section>
@@ -243,14 +253,29 @@
                         <section id="scroll-to-hash" class="mt-6 mb-6">
 
                             <div class="content is-large">
-                                <h2 class="has-text-info">Scroll to ID</h2>
-                                <p>The library supports smooth scrolling for elements based on <code>id</code>, for links on the same page. 
+                                <h2 class="has-text-info">Scroll to Section</h2>
+                                <p>The library supports smooth scrolling for elements based on <code>id</code>, for links on the same page.<br>
                                     Add the <code>smooth-scroll-link</code> class to the desired link. Make sure your target element has the corresponding <code>id</code> attribute.</p>
 
                                 <p>Example:</p>
 
                                 <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                                <pre><code>&lt;a href="#contact" <span class="has-text-info">class=</span><span class="has-text-warning">"smooth-scroll-link"</span>>Contact&lt;/a></code></pre>
+                                <pre><code>
+                                    &lt;a href="<span class="has-text-warning">#contact</span>" <span class="has-text-info">class=</span><span class="has-text-warning">"smooth-scroll-link"</span>>Contact&lt;/a>
+                                </code></pre>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>
+                                    &lt;section <span class="has-text-info">id=</span><span class="has-text-warning">"contact"</span>>&lt;/section>
+                                </code></pre>
+
+                                <p class="mt-6">The default time is <code>2000ms</code>, but it can be changed using the <code>data-smooth-time-link</code> attribute. Value in milliseconds.</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>
+                                    &lt;a href="<span class="has-text-warning">#contact</span>" <span class="has-text-info">class=</span><span class="has-text-warning">"smooth-scroll-link"</span> <span class="has-text-info">data-smooth-time-link=</span><span class="has-text-warning">"5000"</span>>Contact&lt;/a>
+                                </code></pre>
+
                             </div>
 
                         </section>
