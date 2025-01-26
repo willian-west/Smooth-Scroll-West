@@ -256,8 +256,11 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleMenuFixed();
 
             
-            if (mapContainers.length > 0) {
-                mapContainers.forEach((container) => container.classList.remove('active'));
+            if( !IS_MOBILE )
+            {
+                if (mapContainers.length > 0) {
+                    mapContainers.forEach((container) => container.classList.remove('active'));
+                }
             }
 
             if( __Scroll.debug ) console.log('Scroll Page: '+__Scroll.scrollPosition);
@@ -417,7 +420,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateParallax() {
 
         // VERTICAL
-        if (parallaxItems.length > 0) {
+        if (parallaxItems.length > 0)
+        {
 
             parallaxItems.forEach(item =>
             {
@@ -594,9 +598,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         
-        scrollToHashListener();
+        if( !IS_MOBILE ) scrollToHashListener();
 
-        if( __Scroll.localhost ) scrollToHistoric();
+        if( __Scroll.localhost && !IS_MOBILE ) scrollToHistoric();
 
         if( __Scroll.debug ) console.log('Smooth Scroll initialized.');
 
@@ -646,11 +650,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target)
             {
                 __Scroll.smoothScrollTo(target);  // Scrolls to the element
-
+                
                 __Scroll.scrollPosition = __Scroll.getOffsetTop(target);
-
+                
                 if( headerTag != null ) headerTag.classList.add('is-hide');
-
+                
                 setTimeout( () => {
                     checkWayPoints();
                     updateScrollBar();

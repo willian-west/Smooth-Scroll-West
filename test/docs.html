@@ -108,7 +108,11 @@
 
 
                         <div class="content is-large mt-6">
-                            <p class="mb-6">Welcome to the documentation for <strong class="has-text-warning">Smooth Scroll West</strong>! This library provides advanced smooth scrolling, parallax effects, and moving the page to a certain point. Below, you'll find detailed information on how to set up and use each feature.</p>
+                            <p class="mb-6">Welcome to the documentation for <strong class="has-text-warning">Smooth Scroll West</strong>! This library provides advanced smooth scrolling, parallax effects, and moving the page to a certain point. Below, you'll find detailed information on how to set up and use each feature.
+                            <br><br>
+                            <strong class="has-text-warning">Important information:</strong><br><br>
+                            For Mobile, Smooth Scroll West <strong class="has-text-danger">is disabled</strong> and the only function that still works is <span class="has-text-info">Parallax</span>.
+                            </p>
                             <hr>
                         </div>
 
@@ -211,14 +215,20 @@
 
                             <div class="content is-large">
                                 <h2 class="has-text-info">Scroll to Hash</h2>
-                                <p>The library supports smooth scrolling to elements based on the URL hash. Ensure your target elements use the <code>scroll-id</code> attribute instead of <code>id</code>.</p>
+                                <p>The library supports smooth scrolling to elements based on the URL hash. Ensure your target elements use the <code>scroll-id</code> attribute instead of <code>id</code>. Smooth scrolling is disabled on Mobile, in this case for Mobile use the <code>id</code> attribute.</p> 
 
                                 <p>Example:</p>
 
                                 <p>URL: https//domain.com/#contact</p>
 
-                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code DESKTOP</span>
                                 <pre><code>&lt;div <span class="has-text-info">scroll-id=</span><span class="has-text-warning">"contact"</span>>Contact Section&lt;/div></code></pre>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code MOBILE</span>
+                                <pre><code>&lt;div <span class="has-text-info">id=</span><span class="has-text-warning">"contact"</span>>Contact Section&lt;/div></code></pre>
+
+
+                                
                             </div>
 
                         </section>
@@ -235,7 +245,7 @@
                             <div class="content is-large">
                                 <h2 class="has-text-info">Scroll to ID</h2>
                                 <p>The library supports smooth scrolling for elements based on <code>id</code>, for links on the same page. 
-                                    Add the <code>smooth-scroll-link</code> class to the desired link. Make sure your target element has the corresponding <code>id</code> attribute. </p>
+                                    Add the <code>smooth-scroll-link</code> class to the desired link. Make sure your target element has the corresponding <code>id</code> attribute.</p>
 
                                 <p>Example:</p>
 
