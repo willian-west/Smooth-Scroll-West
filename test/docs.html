@@ -48,7 +48,7 @@
                                     <a class="navbar-item" href="index.html"> Home </a>
                                     <a class="navbar-item" href="demos.html"> Demos </a>
                                     <a class="navbar-item is-active" href="docs.html"> Docs </a>
-                                    <a class="navbar-item" href=""> Download </a>
+                                    <a class="navbar-item" href="https://github.com/willian-west/Smooth-Scroll-West/releases/tag/1.0.0" target="_blank"> Download </a>
                                 </div>
                             </div>
                         </nav>
@@ -76,14 +76,6 @@
 
 
 
-                <!-- <div class="font-big mt-6 pt-6 pb-6">
-                    <div  class="js-parallax-h t1" data-offset="550">Smo<span class="has-text-info">o</span>th</div>
-                    <span class="js-parallax-h t2 is-block has-text-right" data-direction="right" data-offset="500"><span class="has-text-info">S</span>croll</span>
-                    <span class="js-parallax-h t3 is-block has-text-right" data-offset="1100"><small class="is-block"><span class="has-text-info">W</span>est</small></span>
-                </div> -->
-
-
-
 
                 <div class="container pb-6">
 
@@ -99,7 +91,7 @@
                                 <span class="ml-5 has-text-grey-light"><</span><span class="">main</span> <span class="has-text-info">class</span><span class="has-text-grey-light">="</span><span class="has-text-warning">smooth-scroll-container</span><span class="has-text-grey-light">"></span><br>
                                     <span class="ml-6 has-text-grey-light"><</span>div <span class="has-text-info">class</span><span class="has-text-grey-light">="</span><span class="has-text-warning">smooth-scroll-content</span><span class="has-text-grey-light">"></span><br>
                                     <br>
-                                        <span class="ml-6 pl-4 has-text-grey-light"><</span>!--- ALL YOUR CONTENT HERE -- <span class="has-text-grey-light">></span><br>
+                                        <span class="ml-6 pl-4 has-text-grey-light"><</span>!-- ALL YOUR CONTENT HERE --<span class="has-text-grey-light">></span><br>
                                     <br>
                                     <span class="ml-6 has-text-grey-light"><</span>/div<span class="has-text-grey-light">></span><br>
                                 <span class="ml-5 has-text-grey-light"><</span>/main<span class="has-text-grey-light">></span><br>
@@ -112,56 +104,193 @@
                         </code></pre>
 
 
-                        
+                        <hr class="mt-6">
+
+
+                        <div class="content is-large mt-6">
+                            <p class="mb-6">Welcome to the documentation for <strong class="has-text-warning">Smooth Scroll West</strong>! This library provides advanced smooth scrolling, parallax effects, and moving the page to a certain point. Below, you'll find detailed information on how to set up and use each feature.</p>
+                            <hr>
+                        </div>
 
 
 
-                        
-<!-- 
 
-                        
-                        <div class="pt-6 mb-6">
-                            <div class="columns is-vcentered is-centered mt-6">
-                                <div class="column is-6">
-                                    <div class="wrap-img">
-                                        <img class="js-parallax-z" data-zoom="40"
-                                            src="https://placehold.co/684x340/222834/14161a/jpg"
-                                            alt="Placeholder image"
-                                        />
-                                    </div>
-                                </div>
+                        <!-- Getting Started Section -->
+                        <section id="getting-started" class="container mb-6">
 
-                                <div class="column is-5 pl-6">
-                                    <h2>Image with <span class="has-text-info">Zoom</span></h2>
-                                    <h4 class="has-text-grey">With an element with <span class="has-text-info">hidden overflow</span> on the outside.</h4>
+                            <h1 class="mt-6 has-text-info">First <span class="has-text-warning">Step</span></h1>
 
-                                    <p class="subtitle mt-6 font-secondary"><small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus expedita delectus in labore, eos eius optio, at voluptas quidem dolor quam fugit iusto laboriosam eum reprehenderit laudantium porro repellendus praesentium!</small></p>
-                                </div>
+                            <div class="content is-large mt-5">
+                                <p>To get started with <strong>Smooth Scroll West</strong>, make sure your HTML structure includes the required elements listed above.</p>
+
+                                <p class="mt-6">Include the following JS file in your HTML:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;script <span class="has-text-info">src=</span><span class="has-text-warning">"path/to/smooth-scroll-west.min.js"</span>>&lt;/script></code></pre>
+
+
+                                <p class="mt-6">Include the following CSS file in your HTML:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;link <span class="has-text-info">href=</span><span class="has-text-warning">"path/to/smooth-scroll-west.min.css"</span> rel="stylesheet">&lt;/link></code></pre>
                             </div>
 
-                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
-                            <pre><code>
-                                <span><</span>img                            
-                                <span class="has-text-info">class</span>=<span class="has-text-warning">"js-parallax-z"</span> 
-                                <span class="has-text-info">data-zoom</span>=<span class="has-text-warning">"40"</span> 
-                            >
-                            </code></pre>
-                        </div> -->
+                        </section>
+                            
+
+
+                        <hr>
+
+
+
+                        <!-- Scroll Options -->
+                        <section id="scroll-options" class="mt-6 mb-6">
+
+                            <div class="content is-large">
+                                <h2 class="has-text-info">Scroll Options</h2>
+                                <p>Customize the scrolling behavior with the following options:</p>
+
+                                <ul class="mt-6">
+                                    <li><strong>scrollAmountMove</strong>: Adjust the scroll speed multiplier (default: <code>1.2</code>).</li>
+                                    <li><strong>scrollMoveTime</strong>: Set the scroll animation duration in milliseconds (default: <code>1100</code>).</li>
+                                    <li><strong>activeScrollPage</strong>: Enable or disable scrolling (default: <code>true</code>).</li>
+                                </ul>
+
+                                <p class="mt-6">Example of changing options:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>
+                                    __Scroll.scrollAmountMove = 1.5;<br>
+                                    __Scroll.scrollMoveTime = 1000;
+                                </code></pre>
+                            </div>
+
+                        </section>
+
+
+
+                        <hr>
+
+
+
+                        <!-- Parallax Effects -->
+                        <section class="mt-6 mb-6">
+
+                            <div class="content is-large">
+
+                                <h2 class="has-text-info">Parallax Effects</h2>
+                                <p>Add parallax effects to your elements using the following classes:</p>
+
+                                <ul>
+                                    <li><code>js-parallax</code>: Vertical parallax (requires <code>data-start</code> and <code>data-end</code> attributes).</li>
+                                    <li><code>js-parallax-h</code>: Horizontal parallax (requires <code>data-offset</code> and optional <code>data-direction</code> attributes).</li>
+                                    <li><code>js-parallax-z</code>: Zoom parallax (requires <code>data-zoom</code> attribute).</li>
+                                </ul>
+
+                                <p>Example for vertical parallax:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;div <span class="has-text-info">class=</span><span class="has-text-warning">"js-parallax"</span> <span class="has-text-info">data-start=</span><span class="has-text-warning">"-100"</span> <span class="has-text-info">data-end=</span><span class="has-text-warning">"100"</span>>&lt;/div></code></pre>
+
+                                <p>Example for horizontal parallax:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;div <span class="has-text-info">class=</span><span class="has-text-warning">"js-parallax-h"</span> <span class="has-text-info">data-offset=</span><span class="has-text-warning">"200"</span>  <span class="has-text-info">data-direction=</span><span class="has-text-warning">"right"</span>>&lt;/div></code></pre>
+                            </div>
+
+                        </section>
+
+
+
+                        <hr>
+
+
+
+                        <!-- Scroll to Hash -->
+                        <section id="scroll-to-hash" class="mt-6 mb-6">
+
+                            <div class="content is-large">
+                                <h2 class="has-text-info">Scroll to Hash</h2>
+                                <p>The library supports smooth scrolling to elements based on the URL hash. Ensure your target elements use the <code>scroll-id</code> attribute instead of <code>id</code>.</p>
+
+                                <p>Example:</p>
+
+                                <p>URL: https//domain.com/#contact</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;div <span class="has-text-info">scroll-id=</span><span class="has-text-warning">"contact"</span>>Contact Section&lt;/div></code></pre>
+                            </div>
+
+                        </section>
+
+
+
+                        <hr>
+
+
+
+                        <!-- Scroll to Hash -->
+                        <section id="scroll-to-hash" class="mt-6 mb-6">
+
+                            <div class="content is-large">
+                                <h2 class="has-text-info">Scroll to ID</h2>
+                                <p>The library supports smooth scrolling for elements based on <code>id</code>, for links on the same page. 
+                                    Add the <code>smooth-scroll-link</code> class to the desired link. Make sure your target element has the corresponding <code>id</code> attribute. </p>
+
+                                <p>Example:</p>
+
+                                <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                                <pre><code>&lt;a href="#contact" <span class="has-text-info">class=</span><span class="has-text-warning">"smooth-scroll-link"</span>>Contact&lt;/a></code></pre>
+                            </div>
+
+                        </section>
 
 
 
 
 
+                        <hr>
 
 
 
 
+                        <section class="hero is-dark">
+                            <div class="hero-body">
+                                <h2 class="title is-1"><span class="has-text-info">Use</span> Google Maps</h2>
+                                <p class="subtitle">Example</p>
+                            </div>
+                        </section>
+
+                        <p>The behavior of the mouse wheel with the Google iframe interferes with the page scroll behavior, so to minimize the effects use the classes below:</p>
+
+
+                        <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                        <pre><code class="has-text-grey">
+
+                            <span class="ml-5 has-text-grey-light"><</span><span class="">div</span> <span class="has-text-info">class</span><span class="has-text-grey-light">="</span><span class="has-text-warning">map-container</span><span class="has-text-grey-light">"></span><br>
+                                <span class="ml-6 has-text-grey-light"><</span>div <span class="has-text-info">class</span><span class="has-text-grey-light">="</span><span class="has-text-warning">map-iframe</span><span class="has-text-grey-light">"></span><br>
+                                    <span class="ml-6 pl-4 has-text-grey-light"><</span>!-- YOUR IFRAME HERE --<span class="has-text-grey-light">></span><br>
+                                <span class="ml-6 has-text-grey-light"><</span>/div<span class="has-text-grey-light">></span><br>
+                            <span class="ml-5 has-text-grey-light"><</span>/div<span class="has-text-grey-light">></span><br>
+
+                        </code></pre>
+
+
+                        <div class="map-container">
+                            <iframe class="map-iframe" style="height: 600px; width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193596.26002810575!2d-74.14431235114544!3d40.69728463488439!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNova%20Iorque%2C%20NY%2C%20EUA!5e0!3m2!1spt-BR!2sbr!4v1737837864716!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+
+
+                        
+
+                        
 
 
 
 
                         <div class="has-text-centered mt-6 mb-6">
-                            <a href="download.html" class="button is-info is-medium is-rounded mt-6">Download</a>
+                            <a href="https://github.com/willian-west/Smooth-Scroll-West/releases/tag/1.0.0" target="_blank" class="button is-info is-medium is-rounded mt-6">Download</a>
                         </div>
 
                         <div class="pt-6 pb-6"></div>
