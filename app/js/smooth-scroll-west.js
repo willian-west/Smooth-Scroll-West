@@ -173,6 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // export function
+    window.updateScrollBar = updateScrollBar;
+
 
     /**
     * Apply transform translate x.
@@ -651,13 +654,10 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 __Scroll.smoothScrollTo(target);  // Scrolls to the element
                 
-                __Scroll.scrollPosition = __Scroll.getOffsetTop(target);
-                
                 if( headerTag != null ) headerTag.classList.add('is-hide');
                 
                 setTimeout( () => {
                     checkWayPoints();
-                    updateScrollBar();
                 }, __Scroll.scrollMoveTime);
             }
         }
@@ -711,8 +711,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const elementId = link.slice(1);  // REMOVE '#' FROM THE BEGINNING OF THE HASH
                     const element   = document.getElementById(elementId);
         
-                    console.log(attrLink);
-
                     if (element)
                     {
                         if( attrLink != null && attrLink != "" ) timeLink = attrLink;
@@ -729,10 +727,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
                         __Scroll.smoothScrollTo(`#${elementId}`);  // SCROLLS TO THE ELEMENT WITH THE ID
-                        __Scroll.scrollPosition   = __Scroll.getOffsetTop(`#${elementId}`);
                         __Scroll.activeScrollPage = false; // DISABLE SCROLLING MOUSE
         
-                        updateScrollBar();
 
                         setTimeout( () => {
                             checkWayPoints();
@@ -818,6 +814,14 @@ __Scroll.getOffsetTop = function(element) {
 __Scroll.smoothScrollTo = function(elm, offset=0) {
     if( elm )
     {
-        __Scroll.scrollContent.style.transform = `translateY(-${__Scroll.getOffsetTop(elm)+offset}px)`;
+        let distance;
+
+        distance = __Scroll.getOffsetTop(elm);
+
+        __Scroll.scrollContent.style.transform = `translateY(-${distance+offset}px)`;
+        __Scroll.scrollPosition = distance;
+
+        updateScrollBar();
+        
     } else return false;
 }
