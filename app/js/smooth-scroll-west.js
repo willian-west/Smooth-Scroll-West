@@ -348,6 +348,12 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollBar.addEventListener('mousedown', scrollBarMouseDown);
         document.addEventListener('mousemove', documentMouseMove);
         document.addEventListener('mouseup', documentMouseUp);
+
+        /**
+        * Handle Hash Events
+        */
+
+        window.addEventListener('hashchange', scrollToHashListener);
     }
 
 
@@ -663,6 +669,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+
+
+  
 
 
 
