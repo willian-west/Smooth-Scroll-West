@@ -529,6 +529,70 @@
 
 
 
+                        <section class="hero is-dark" scroll-id="zoom">
+                            <div class="hero-body">
+                                <h2 class="title is-1"><span class="has-text-info">Scroll with </span> Hash</h2>
+                                <p class="subtitle">Examples</p>
+                            </div>
+                        </section>
+
+                        <p>The library supports smooth scrolling to elements based on the URL hash. Ensure your target elements use the <code>scroll-id</code> attribute instead of <code>id</code>. Smooth scrolling is disabled on Mobile, in this case for Mobile use the <code>id</code> attribute.</p>
+                        
+                        
+                        <div class="pt-4 mb-6">
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;a href="<span class="has-text-warning">#section1</span>">Section 1&lt;/a>
+                            </code></pre>
+                        </div>
+
+
+                        <p class="">Click the button below:</p>
+                        <a href="#section3" class="button is-info is-medium">Section 3</a>
+                        <a href="#section4" class="button is-info is-medium">Section 4</a>
+
+                        <div style="height: 600px;"></div>
+
+
+                        <div scroll-id="section3" class="mb-6">
+                            <h2 class="title is-1"><span class="has-text-info">Section</span> 3</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>
+                                Eum vel nemo corporis impedit inventore deserunt error aut<br>
+                                quaerat accusamus, soluta iusto libero, beatae porro ipsa labore,<br>
+                                ommodi quidem repudiandae architecto?
+                            </p>
+
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;section <span class="has-text-info">scroll-id=</span><span class="has-text-warning">"section3"</span>>&lt;/section>
+                            </code></pre>
+                        </div>
+
+                        <hr>
+
+                        <div scroll-id="section4" class="mt-6">
+                            <h2 class="title is-1"><span class="has-text-info">Section</span> 4</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.<br>
+                                Eum vel nemo corporis impedit inventore deserunt error aut<br>
+                                quaerat accusamus, soluta iusto libero, beatae porro ipsa labore,<br>
+                                ommodi quidem repudiandae architecto?
+                            </p>
+
+                            <span class="tag is-dark font-exo" style="--bulma-radius: 0px">Code</span>
+                            <pre><code>
+                                &lt;section <span class="has-text-info">scroll-id=</span><span class="has-text-warning">"section4"</span>>&lt;/section>
+                            </code></pre>
+                        </div>
+
+                        <hr>
+                        
+
+
+
+
+
+
+
 
 
 
