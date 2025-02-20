@@ -553,7 +553,7 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxHorizItems.forEach(item =>
             {
                 const itemHeight = outerHeight(item);
-                const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight - itemHeight);
+                const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight);
                 const dataEnd    = dataStart + __Scroll.containerHeight + itemHeight;
 
                 item.setAttribute('data-start', Math.round(dataStart));
@@ -566,7 +566,7 @@ document.addEventListener('DOMContentLoaded', () => {
             parallaxZoomItems.forEach(item =>
             {
                 const itemHeight = outerHeight(item);
-                const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight - itemHeight);
+                const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight);
                 const dataEnd    = dataStart + __Scroll.containerHeight + itemHeight;
 
                 item.setAttribute('data-start', Math.round(dataStart));
@@ -732,7 +732,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         __Scroll.scrollContent.style.setProperty('--smooth-time-scroll-page', timeLinkSec+'s');
                         __Scroll.scrollContent.classList.add('is-link');
                         
-                        if( headerTag != null ) headerTag.classList.add('is-hide');
+                        if( headerTag != null )
+                        {
+                            headerTag.classList.add('is-compact');
+                            headerTag.classList.add('is-hide');
+                        }
 
 
                         __Scroll.smoothScrollTo(`#${elementId}`);  // SCROLLS TO THE ELEMENT WITH THE ID
