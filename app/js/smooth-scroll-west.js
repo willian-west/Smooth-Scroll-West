@@ -693,6 +693,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     applyTransform(smoothScrollLocalPosition);
                     updateScrollBar();
 
+                    if( headerTag != null ) headerTag.classList.add('is-hide');
+
+
                     setTimeout( checkWayPoints(), __Scroll.scrollMoveTime);
                 }
             }
@@ -704,7 +707,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // Event click move to link
-    if (smoothScrollLink.length > 0) {
+    if (smoothScrollLink.length > 0 && !IS_MOBILE) {
 
         smoothScrollLink.forEach(item => {
             item.addEventListener('click', function(e) {
@@ -732,11 +735,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         __Scroll.scrollContent.style.setProperty('--smooth-time-scroll-page', timeLinkSec+'s');
                         __Scroll.scrollContent.classList.add('is-link');
                         
-                        if( headerTag != null )
-                        {
-                            headerTag.classList.add('is-compact');
-                            headerTag.classList.add('is-hide');
-                        }
+                        if( headerTag != null ) headerTag.classList.add('is-hide');
 
 
                         __Scroll.smoothScrollTo(`#${elementId}`);  // SCROLLS TO THE ELEMENT WITH THE ID
@@ -766,7 +765,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // IFRAME MAP
-    if (mapContainers.length > 0) {
+    if (mapContainers.length > 0 && !IS_MOBILE) {
 
         mapContainers.forEach((mapContainer) => {
 
