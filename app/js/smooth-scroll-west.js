@@ -86,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const parallaxItems           = document.querySelectorAll('.js-parallax');
     const parallaxHorizItems      = document.querySelectorAll('.js-parallax-h');
     const parallaxZoomItems       = document.querySelectorAll('.js-parallax-z');
+    const parallaxHeightItems       = document.querySelectorAll('.js-parallax-height');
     const smoothScrollLink        = document.querySelectorAll('.smooth-scroll-link');
     const waypoints               = document.querySelectorAll('.waypoint');
     const headerTag               = document.querySelector('header');
@@ -540,6 +541,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }
+
+
+        // HEIGHT
+        if (parallaxHeightItems.length > 0)
+        {
+            parallaxHeightItems.forEach(item => {
+                const start = parseInt(item.getAttribute('data-start'));
+                const end   = parseInt(item.getAttribute('data-end'));
+                let height  = parseInt(item.getAttribute('data-height'));
+
+                if( isNaN(height) ){
+                    height = 0;
+                    warn("Element '"+ item.className +"' is missing the required 'data-height' attribute. Value between 0% and 100%");
+                }
+
+                if (__Scroll.scrollPosition >= (start - deltaOffSet) && __Scroll.scrollPosition <= (end + deltaOffSet))
+                {
+                    const progress = (__Scroll.scrollPosition - start) / (end - start); // Progress between 0 and 1
+                    let size = Math.round( 100 - (progress * (height))); // Calculates height based on progress
+
+                    item.style.height = `${size}%`;
+
+                    if( __Scroll.debug ) console.log('Parallax Height: '+size);
+                }
+            });
+        }
     }
 
 
@@ -573,6 +600,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.setAttribute('data-end', Math.round(dataEnd));
             });
         }
+
+        if (parallaxHeightItems.length > 0)
+            {
+                parallaxHeightItems.forEach(item =>
+                {
+                    const itemHeight = outerHeight(item);
+                    const dataStart  = parseInt(__Scroll.getOffsetTop(item) - __Scroll.containerHeight);
+                    const dataEnd    = dataStart + __Scroll.containerHeight + itemHeight;
+    
+                    item.setAttribute('data-start', Math.round(dataStart));
+                    item.setAttribute('data-end', Math.round(dataEnd));
+                });
+            }
     }
 
 
