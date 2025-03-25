@@ -40,6 +40,7 @@ __Scroll.localhost = false;
 // {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
 __Scroll.activeWaypointAnim = true;
 
+__Scroll.offsetShowMenuFixed = 100;
 
 
 
@@ -215,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Show / hide menu
             if( scrollPercent > checkScroll )
             {
-                if( __Scroll.scrollPosition > 80 ){
+                if( __Scroll.scrollPosition > __Scroll.offsetShowMenuFixed ){
                     if( !__Scroll.menuOpen ) headerTag.classList.add('is-hide');
                 }
             }else{
