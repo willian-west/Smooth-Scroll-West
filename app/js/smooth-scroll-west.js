@@ -40,6 +40,7 @@ __Scroll.localhost = false;
 // {boolean} Enable entry animations for elements that have the 'waypoint' class by adding the 'animated' class
 __Scroll.activeWaypointAnim = true;
 
+// {int}   Distance from top to hide sticky menu - in px
 __Scroll.offsetShowMenuFixed = 100;
 
 
@@ -197,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if( headerTag == null ) return false;
 
         // Mode compact menu
-        if( __Scroll.scrollPosition > 50 )
+        if( __Scroll.scrollPosition > __Scroll.offsetShowMenuFixed )
         {
             headerTag.classList.add('is-compact');
             if( __Scroll.activeToggleMenuFixed ) headerTag.classList.add('is-hide');
