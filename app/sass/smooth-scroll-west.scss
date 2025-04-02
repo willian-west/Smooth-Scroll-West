@@ -12,7 +12,7 @@
     --ease-animation-link: cubic-bezier(.66,0,.15,1);
 }
 
-@media only screen and (min-width: 1025px){
+@media only screen and (min-width: 1025px) and (hover: hover) and (pointer: fine){
 
     html {
         scrollbar-width: none;
@@ -89,7 +89,7 @@
 }
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1024px), (hover: none) and (pointer: coarse) {
     .smooth-scroll-container {
         height: auto;
         overflow: visible;
@@ -102,4 +102,10 @@
     .smooth-scroll-content {
         position: relative;
     }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    ::-webkit-scrollbar{ width: 5px; }
+    ::-webkit-scrollbar-track{ background: #EEE; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb{ background: #c1bfba; border-radius: 10px; }
 }
