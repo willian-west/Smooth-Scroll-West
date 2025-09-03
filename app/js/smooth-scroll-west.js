@@ -159,6 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    // export function
+    window.checkWayPoints = checkWayPoints;
+
 
     /**
     * Update scrollbar height based on content.
@@ -878,4 +881,18 @@ __Scroll.smoothScrollTo = function(elm, offset=0) {
         updateScrollBar();
         
     } else return false;
+}
+
+
+__Scroll.setMoveTime = function(time=1100) {
+
+    if( time > 0 )
+    {
+        __Scroll.scrollMoveTime = time;
+
+        let html = document.documentElement;
+        html.style.setProperty('--smooth-time-scroll-page', (__Scroll.scrollMoveTime/1000)+'s');
+
+        console.log(time);
+    }
 }
