@@ -407,6 +407,7 @@ document.addEventListener('DOMContentLoaded', () => {
             checkWayPoints();
             toggleMenuFixed();
             updateParallax();
+            updateResizePage();
 
             requestAnimationFrame(() => {
                 applyTransform(__Scroll.scrollPosition);
